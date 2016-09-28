@@ -1,0 +1,98 @@
+$icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
+// bower:scss
+@import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
+// endbower
+
+@import "../scripts/libraries/ng-terminal/ng-terminal.css";
+
+body{
+  background-image: url('../images/background.gif');
+}
+
+pre {
+  color: #C7FF47;
+}
+
+.center-text{
+  text-align: center;
+}
+
+.code{
+  font-family: Consolas;
+  font-size: 24px;
+
+  a{
+    color: #6BEBFF;
+
+    &:hover,
+    &:active,
+    &:link,
+    &.focus{
+      color: #6BEBFF;
+    }
+  }
+
+  &.comment{
+    color: #808080;
+  }
+}
+
+header{
+  margin-top: 100px;
+  margin-bottom: 150px;
+}
+
+.schedule{
+  .code{
+    font-size: 32px;
+  }
+}
+
+.white{
+  color: white;
+}
+
+.limegreen{
+  color: #C7FF47;
+}
+
+.blue{
+  color: #6BEBFF;
+}
+
+.yellow{
+  color: #FFEE82;
+}
+
+body {
+  padding: 0;
+}
+
+.console{
+  border: 1px solid darkgrey;
+
+  .terminal-viewport::-webkit-scrollbar-track
+  {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    background-color: #000;
+  }
+
+  .terminal-viewport::-webkit-scrollbar
+  {
+    width: 6px;
+    background-color: #000;
+  }
+
+  .terminal-viewport::-webkit-scrollbar-thumb
+  {
+    background-color: #C7FF47;
+  }
+}
+
+footer{
+  text-align: center;
+  a, a:link, a:active, a:focus, a:visited{
+    font-size: 10px;
+    color: #808080;
+  }
+}
