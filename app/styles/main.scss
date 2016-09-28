@@ -96,3 +96,40 @@ footer{
     color: #808080;
   }
 }
+
+.breadcrumb{
+  height: 50px;
+  background: #404040;
+  padding: 0!important;
+  display: flex;
+
+  .item
+  {
+    height: 100%;
+    font-size: 20px;
+    border-right: 1px #5a5a5a solid;
+    padding-top: 10px;
+    text-align: center;
+    text-decoration: none;
+    -webkit-box-shadow: inset -11px -14px 38px -10px rgba(0,0,0,0.75);
+    -moz-box-shadow: inset -11px -14px 38px -10px rgba(0,0,0,0.75);
+    box-shadow: inset -11px -14px 38px -10px rgba(0,0,0,0.75);
+
+    a,
+    a:link,
+    a:visited,
+    a:focus{
+      color: lightgrey;
+    }
+
+    a:hover{
+      color: darkgrey;
+    }
+
+    a[disabled="disabled"]{
+      text-decoration: none!important;
+      cursor: default;
+      color: lightgrey!important;
+    }
+  }
+}
