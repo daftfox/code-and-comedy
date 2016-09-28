@@ -41,6 +41,7 @@
   },
   "scripts": {
     "test": "karma start test\\karma.conf.js",
-    "start": "http-server ./dist -p9001 -o"
+    "start": "http-server ./dist -p9001 -o",
+    "postinstall": "bower install"
   }
 }
