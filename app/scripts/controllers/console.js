@@ -20,12 +20,13 @@ function ConsoleCtrl ($scope, _) {
 
   function init(){
     printToConsole([
-      '---------------',
-      'Available commands:',
-      '- register -m "email address" -n "name": Register for the Code & Comedy event',
-      '- as: Number of available seats',
-      '- help: This menu',
-      '---------------',]
+      '|-------------------------------------------------------------------------------|',
+      '| Available commands:                                                           |',
+      '|-------------------------------------------------------------------------------|',
+      '| - register -m "email address" -n "name": Register for the Code & Comedy event |',
+      '| - as: Number of available seats                                               |',
+      '| - help: This menu                                                             |',
+      '|-------------------------------------------------------------------------------|',]
     );
   }
 
@@ -62,18 +63,43 @@ function ConsoleCtrl ($scope, _) {
   }
 
   $scope.$on('terminal-input', function (e, consoleInput) {
+    // split the entire string so we can interpret word by word
     var cmd = consoleInput[0].command.split(' ');
 
+    // register the user for the CnC-event
     if(cmd.indexOf('register') !== -1){
       registerGuest(cmd);
       return;
     }
+
+    // display the number of available seats
     if(cmd.indexOf('as') !== -1){
       printSeatsLeft();
       return;
     }
+
+    // summon help menu
     if(cmd.indexOf('help') !== -1){
       init();
+      return;
+    }
+
+    // The ultimate question
+    if(consoleInput[0].command.indexOf('What is the answer to life, the universe and everything?') !== -1){
+      printToConsole(
+        [
+          "The answer is:"
+        ]
+      );
+      var i = 0;
+      var interval = setInterval(function(){
+        i++;
+        printToConsole(["."]);
+        if(i >= 5){
+          printToConsole(["42"]);
+          clearInterval(interval);
+        }
+      }, 500);
       return;
     }
 
