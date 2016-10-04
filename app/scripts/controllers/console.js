@@ -20,13 +20,12 @@ function ConsoleCtrl ($scope, _) {
 
   function init(){
     printToConsole([
-      '|-------------------------------------------------------------------------------|',
-      '| Available commands:                                                           |',
-      '|-------------------------------------------------------------------------------|',
-      '| - register -m "email address" -n "name": Register for the Code & Comedy event |',
-      '| - as: Number of available seats                                               |',
-      '| - help: This menu                                                             |',
-      '|-------------------------------------------------------------------------------|',]
+      '---------------------',
+      ' Available commands:',
+      ' - register -m "email address" -n "name": Register for the Code & Comedy event',
+      ' - as: Number of available seats',
+      ' - help: This menu',
+      '---------------------',]
     );
   }
 

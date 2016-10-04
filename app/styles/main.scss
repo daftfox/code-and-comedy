@@ -18,7 +18,7 @@ pre {
 }
 
 .code{
-  font-family: Consolas;
+  font-family: Consolas, Monaco;
   font-size: 24px;
 
   a{
@@ -131,5 +131,39 @@ footer{
       cursor: default;
       color: lightgrey!important;
     }
+  }
+}
+
+@media only screen and (max-width: 1700px){
+  header{
+    margin-bottom: 50px;
+    margin-top: 25px;
+  }
+  .code{
+    font-size: 18px;
+  }
+
+  .schedule .code{
+    font-size: 20px;
+  }
+}
+
+@media only screen and (max-width: 1200px){
+  .code{
+    font-size: 18px;
+  }
+
+  .schedule .code{
+    font-size: 18px;
+  }
+}
+
+@media only screen and (max-width: 1000px){
+  .code{
+    font-size: 14px;
+  }
+
+  .schedule .code{
+    font-size: 14px;
   }
 }
