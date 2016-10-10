@@ -12,6 +12,7 @@ angular
   .module('codeAndComedyApp', [
     'ngAnimate',
     'ui.router',
+    'ngResource',
     'vtortola.ng-terminal',
     'underscore'
   ]).config(function($stateProvider, $locationProvider) {

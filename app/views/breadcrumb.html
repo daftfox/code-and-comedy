@@ -1,8 +1,10 @@
 <div class="breadcrumb">
   <div class="item col-xs-12" ng-repeat="state in states">
+    <div class="left tab-border"></div>
     <a ui-sref="{{state.name}}" ng-disabled="state.name == currentState.name">{{state.name}}.js</a>
     <div ng-if="currentState.name !== 'main' && state.name !== 'main'" class="btn btn-xs btn-default pull-right" ui-sref="main">
       <i class="glyphicon glyphicon-remove"></i>
     </div>
+    <div class="right tab-border"></div>
   </div>
 </div>

@@ -9,5 +9,4 @@
  */
 angular.module('codeAndComedyApp')
   .controller('RegisterCtrl', function () {
-
   });
