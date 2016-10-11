@@ -12,7 +12,12 @@ angular.module('codeAndComedyApp')
 
 function ConsoleCtrl ($scope, _, RegistrationsService, helper) {
   var numBadTries = 0;
-  var ee = false;
+  var ee = false,
+      ez = false,
+      nameAsked = false,
+      emailAsked = false,
+      name,
+      email;
 
   setTimeout(function () {
     init();
@@ -21,10 +26,11 @@ function ConsoleCtrl ($scope, _, RegistrationsService, helper) {
 
   function init(){
     printToConsole(['---------------------'], 'limegreen');
-    printToConsole([' Available commands:',
-      ' - register -m "email address" -n "name": Register for the Code & Comedy event',
-      ' - as: Number of available seats',
-      ' - help: This menu'], 'green');
+    printToConsole([' Available commands:'], 'green');
+    printToConsole([' - ez: Simpler, interactive registration for less experienced users'], 'blue');
+    printToConsole([' - register -m "email address" -n "name": Register for the Code & Comedy event'], 'green');
+    printToConsole([' - as: Number of available seats'], 'green');
+    printToConsole([' - help: This menu'], 'green');
     printToConsole(['---------------------'], 'limegreen');
   }
 
@@ -90,17 +96,91 @@ function ConsoleCtrl ($scope, _, RegistrationsService, helper) {
       }
       printToConsole(output, 'red');
     });
+  }
 
+  function ezRegistration(cmd){
+    console.log(cmd);
+    if(!name){
+      if(!nameAsked){
+        printToConsole(['What is your first name?']);
+        nameAsked = true;
+        return;
+      } else {
+        name = cmd[0];
+      }
+    }
+    if(!email){
+      if(!emailAsked){
+        printToConsole(['What is your E-Mail address?']);
+        emailAsked = true;
+        return;
+      } else {
+        email = cmd[0];
+      }
+    }
+    if(email && name){
+      registerUser(name, email, function(){
+        nameAsked = false;
+        emailAsked = false;
+        name = undefined;
+        email = undefined;
+        ez = false;
+      });
+    }
+  }
 
+  function registerUser(name, email, cb){
+    var output;
+    var registration = {
+      email: email,
+      name: name,
+      event_id: 1
+    };
+
+    RegistrationsService.register(registration, function(res){
+      output = [
+        name + ' has been registered with E-Mail address ' + email + '.',
+        '',
+        'We hope you will enjoy your evening.'
+      ];
+
+      printToConsole(output, 'green');
+      cb();
+    }, function(err){
+      console.log(err);
+      switch(err.status){
+        case 409:
+          output = ['The user ' + name + ' has already registered with the e-mail address ' + email + ' before.',
+            'Please try again with a different account.'];
+          break;
+        default:
+          output = ['An error occured.', 'Please try again later or contact the administrator'];
+          break;
+      }
+      printToConsole(output, 'red');
+      cb();
+    });
   }
 
   $scope.$on('terminal-input', function (e, consoleInput) {
     // split the entire string so we can interpret word by word
     var cmd = consoleInput[0].command.split(' ');
 
+    if(ez){
+      ezRegistration(cmd);
+      return;
+    }
+
     // register the user for the CnC-event
     if(cmd.indexOf('register') !== -1){
       registerGuest(cmd);
+      return;
+    }
+
+    // display the number of available seats
+    if(cmd.indexOf('ez') !== -1){
+      ez = true;
+      ezRegistration(cmd);
       return;
     }
 

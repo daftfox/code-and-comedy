@@ -147,7 +147,7 @@ footer{
 
     &.right{
       float: right;
-      width: 40%;
+      width: calc(100% - 10% - 40%);
     }
   }
 
@@ -156,151 +156,156 @@ footer{
   background-color: #151515;
   padding: 10px 0 0 0!important;
   display: flex;
-  //background-image: url('../images/background.gif');
-  //border-bottom: 1px dashed #222;
 
-  .item
-  {
-    float: left;
-    min-width: 210px;
-    max-width: 250px;
-    color: lightgrey;
+  .item-wrapper{
 
-    &:hover{
-      color: darkgrey;
-    }
+    width: 40%;
+    border-bottom: 1px #5a5a5a solid;
 
-    &.inactive{
-      .tab-body{
-        border-top: 1px #5a5a5a solid;
-        display: inline-block;
-        height: 100%;
-        width: 170px;
-        background-color: #444444;
-      }
-
-      .tab-border{
-        &.first:not(.last){
-          &.right{
-            //display: none;
-            background: url('../images/tab-border-left-alt-active.png');
-          }
-
-          &.left{
-            background: url('../images/tab-border-left-inactive.png');
-          }
-        }
-
-        &.first.last{
-          &.right{
-            background: url('../images/tab-border-right-inactive.png');
-          }
-          &.left{
-            background: url('../images/tab-border-left-inactive.png');
-          }
-        }
-
-        &.last:not(.first){
-          &.right{
-            background: url('../images/tab-border-right-inactive.png');
-          }
-          &.left{
-            //background: #444;
-            display: none;
-          }
-        }
-      }
-    }
-
-    &:not(.inactive){
-      .tab-body{
-        border-top: 1px #5a5a5a solid;
-        display: inline-block;
-        height: 100%;
-        width: 170px;
-        background-image: url('../images/background.gif');
-      }
-
-      .tab-border{
-        &.first:not(.last){
-          &.right{
-            background: url('../images/tab-border-right-alt-active.png');
-          }
-
-          &.left{
-            background: url('../images/tab-border-left-active.png');
-          }
-        }
-
-        &.first.last{
-          &.right{
-            background: url('../images/tab-border-right-active.png');
-          }
-          &.left{
-            background: url('../images/tab-border-left-active.png');
-          }
-        }
-
-        &.last:not(.first){
-          &.right{
-            background: url('../images/tab-border-right-active.png');
-          }
-          &.left{
-            //background: url('../images/background.gif');
-            display: none;
-          }
-        }
-      }
-    }
-
-    height: 100%;
-    font-size: 20px;
-    padding: 0!important;
-    text-align: center;
-    text-decoration: none;
-
-    .tab-body{
-      span{
-        margin-top: 10px;
-        display: inline-block;
-
-        &[disabled="disabled"]{
-          text-decoration: none!important;
-          cursor: default;
-          color: lightgrey!important;
-        }
-      }
-    }
-
-    .btn{
-      position: relative;
-      top: 10px;
-      right: 60px;
-    }
-
-    .btn-xs, .btn-group-xs > .btn{
-      border-radius: 12px;
-      border: none;
-      background-color: #333;
-
-      .glyphicon{
-        color: #fff;
-        margin-left: -1px;
-        margin-top: 1px;
-      }
-    }
-  }
-  .tab-border{
-    height: 40px;
-    width: 40px;
-    display: inline-block;
-
-    &.right{
-      float: right;
-    }
-
-    &.left{
+    .item
+    {
       float: left;
+      min-width: 210px;
+      max-width: 250px;
+      color: lightgrey;
+
+      &:hover{
+        color: darkgrey;
+      }
+
+      &.inactive{
+        .tab-body{
+          border-top: 1px #5a5a5a solid;
+          display: inline-block;
+          height: 40px;
+          width: 170px;
+          background-color: #444444;
+        }
+
+        .tab-border{
+          &.first:not(.last){
+            &.right{
+              //display: none;
+              background: url('../images/tab-border-left-alt-active.png');
+            }
+
+            &.left{
+              background: url('../images/tab-border-left-inactive.png');
+            }
+          }
+
+          &.first.last{
+            &.right{
+              background: url('../images/tab-border-right-inactive.png');
+            }
+            &.left{
+              background: url('../images/tab-border-left-inactive.png');
+            }
+          }
+
+          &.last:not(.first){
+            &.right{
+              background: url('../images/tab-border-right-inactive.png');
+            }
+            &.left{
+              //background: #444;
+              display: none;
+            }
+          }
+        }
+      }
+
+      &:not(.inactive){
+        .tab-body{
+          border-top: 1px #5a5a5a solid;
+          display: inline-block;
+          height: 51px;
+          width: 170px;
+          background-image: url('../images/background.gif');
+        }
+
+        .tab-border{
+          &.first:not(.last){
+            &.right{
+              background: url('../images/tab-border-right-alt-active.png');
+            }
+
+            &.left{
+              background: url('../images/tab-border-left-active.png');
+            }
+          }
+
+          &.first.last{
+            &.right{
+              background: url('../images/tab-border-right-active.png');
+            }
+            &.left{
+              background: url('../images/tab-border-left-active.png');
+            }
+          }
+
+          &.last:not(.first){
+            &.right{
+              background: url('../images/tab-border-right-active.png');
+            }
+            &.left{
+              //background: url('../images/background.gif');
+              display: none;
+            }
+          }
+        }
+      }
+
+      height: 100%;
+      font-size: 20px;
+      padding: 0!important;
+      text-align: center;
+      text-decoration: none;
+
+      .tab-body{
+        span{
+          font-size: 16px;
+          margin-top: 7px;
+          display: inline-block;
+
+          &[disabled="disabled"]{
+            text-decoration: none!important;
+            cursor: default;
+            color: lightgrey!important;
+          }
+        }
+      }
+
+      .btn{
+        position: relative;
+        top: 10px;
+        right: 60px;
+      }
+
+      .btn-xs, .btn-group-xs > .btn{
+        border-radius: 12px;
+        border: none;
+        background-color: #333;
+
+        .glyphicon{
+          color: #fff;
+          margin-left: -1px;
+          margin-top: 1px;
+        }
+      }
+    }
+    .tab-border{
+      height: 40px;
+      width: 40px;
+      display: inline-block;
+
+      &.right{
+        float: right;
+      }
+
+      &.left{
+        float: left;
+      }
     }
   }
 }
