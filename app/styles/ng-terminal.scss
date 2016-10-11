@@ -1,4 +1,4 @@
-@import "https://fonts.googleapis.com/css?family=Roboto+Mono";
+//@import "https://fonts.googleapis.com/css?family=Roboto+Mono";
 
 .terminal-line{
   margin:0;
@@ -12,7 +12,7 @@
   background-color:#000;
   height: 500px;
   color: #F6F6FF;
-  font-family: "Roboto Mono", "Lucida Console", Monaco, monospace;
+  //font-family: "Roboto Mono", "Lucida Console", Monaco, monospace!important;
   overflow-x: hidden;
   overflow-y:hidden;
   font-size: 12px;

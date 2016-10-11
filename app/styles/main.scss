@@ -1,15 +1,20 @@
+$font-family-monospace:   "Roboto Mono", "Lucida Console", Monaco, monospace!default;
+
 $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
 @import "https://fonts.googleapis.com/css?family=Roboto+Mono";
 @import "ng-terminal";
 // bower:scss
 @import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
 // endbower
+@import "../../bower_components/bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
 
 html{
+  font-family: $font-family-monospace;
   margin:0;
   padding:0;
   height:100%;
 }
+
 body{
   background-image: url('../images/background.gif');
   margin:0;
@@ -27,7 +32,6 @@ pre {
 }
 
 .code{
-  font-family: "Roboto Mono", "Lucida Console", Monaco, monospace;
   font-size: 24px;
 
   a{
@@ -83,16 +87,17 @@ body {
 
 .console{
   width: 100vw;
-  height: 70%;
+  height: calc(100vh - 350px)!important;
   position: fixed;
   top: 350px;
   left: 0;
   background: #000;
+  border-top: 2px #5a5a5a solid;
 
   .terminal{
     width: calc(100vw - 36%);
+    height: 90%;
     margin-left: 18%;
-    height: 100%!important;
   }
 
   .terminal-viewport::-webkit-scrollbar-track
@@ -127,28 +132,69 @@ footer{
 }
 
 .breadcrumb{
-  height: 51px;
-  background: #151515;
+  height: 41px;
+  background-color: #151515;
   padding: 0!important;
   display: flex;
+  background-image: url('../images/background.gif');
+  border-bottom: 1px dashed #222;
 
   .item
   {
+    min-width: 250px;
+
+    &.inactive{
+      background-color: #444444;
+    }
+
+    &:not(.inactive){
+      background-image: url('../images/background.gif');
+
+      .tab-border{
+        &.first:not(.last){
+          &.right{
+            background: url('../images/tab-border-left-alt.png');
+          }
+        }
+      }
+    }
+
+    .tab-border{
+      &.first:not(.last){
+        &.right{
+          background: url('../images/tab-border-right-alt.png');
+        }
+
+        &.left{
+          background: url('../images/tab-border-left.png');
+        }
+      }
+
+      &.first.last{
+        &.right{
+          background: url('../images/tab-border-right.png');
+        }
+        &.left{
+          background: url('../images/tab-border-left.png');
+        }
+      }
+
+      &.last:not(.first){
+        &.right{
+          background: url('../images/tab-border-right.png');
+        }
+        &.left{
+          display: none;
+        }
+      }
+    }
+
+
     height: 100%;
     font-size: 20px;
-    border-top: 2px #5a5a5a solid;
-    background-image: url('../images/background.gif');
-    border-bottom: 1px dashed #222;
-    //border-style: solid;
-    //border-width: 0 20px 50px 20px;
-    //border-color: transparent transparent #282828 transparent;
-
     padding: 0!important;
     text-align: center;
     text-decoration: none;
-    //-webkit-box-shadow: inset -11px -14px 38px -10px rgba(0,0,0,0.75);
-    //-moz-box-shadow: inset -11px -14px 38px -10px rgba(0,0,0,0.75);
-    //box-shadow: inset -11px -14px 38px -10px rgba(0,0,0,0.75);
 
     a,
     a:link,
@@ -170,26 +216,35 @@ footer{
     }
 
     .btn{
-      position: absolute;
-      top: 12px;
+      position: relative;
+      top: 10px;
       right: 60px;
     }
+
+    .btn-xs, .btn-group-xs > .btn{
+      border-radius: 12px;
+      border: none;
+      background-color: #333;
+
+      .glyphicon{
+        color: #fff;
+        margin-left: -1px;
+        margin-top: 1px;
+      }
+    }
   }
-}
+  .tab-border{
+    height: 40px;
+    width: 40px;
+    display: inline-block;
 
-.tab-border{
-  height: 50px;
-  width: 50px;
-  display: inline-block;
+    &.right{
+      float: right;
+    }
 
-  &.right{
-    float: right;
-    background: url('../images/tab-border-right.png');
-  }
-
-  &.left{
-    float: left;
-    background: url('../images/tab-border-left.png');
+    &.left{
+      float: left;
+    }
   }
 }
 
@@ -207,6 +262,7 @@ footer{
   }
 
   .console{
+    height: calc(100vh - 300px)!important;
     top: 300px;
   }
 }
@@ -222,6 +278,7 @@ footer{
 
   .console{
     top: 250px;
+    height: calc(100vh - 250px)!important;
     .terminal{
       width: calc(100vw - 16%);
       margin-left: 8%;
@@ -240,6 +297,7 @@ footer{
 
   .console{
     top: 200px;
+    height: calc(100vh - 200px)!important;
     .terminal{
       width: 100vw;
       margin-left: 0;

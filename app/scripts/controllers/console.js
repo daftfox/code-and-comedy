@@ -24,7 +24,7 @@ function ConsoleCtrl ($scope, _, RegistrationsService, helper) {
     printToConsole([' Available commands:',
       ' - register -m "email address" -n "name": Register for the Code & Comedy event',
       ' - as: Number of available seats',
-      ' - help: This menu'], 'blue');
+      ' - help: This menu'], 'green');
     printToConsole(['---------------------'], 'limegreen');
   }
 

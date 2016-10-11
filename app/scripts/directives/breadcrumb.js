@@ -15,14 +15,23 @@ function Breadcrumb(){
     restrict: 'E',
     transclude: true,
     templateUrl: 'views/breadcrumb.html',
-    controller: ['$scope', '$attrs', '$element', '$rootScope',
-      function($scope, $attrs, $element, $rootScope) {
+    controller: ['$scope', '$attrs', '$element', '$rootScope', '$state',
+      function($scope, $attrs, $element, $rootScope, $state) {
         $scope.currentState;
+
+        //console.log($state.get());
         $rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
-          $scope.states = [{name: "main", url: "/"}]
-          if(toState.name != "main"){
-            $scope.states.push(toState);
+          $scope.states = [];
+          var states = $state.get();
+          for(var i = 0; i < states.length; i++){
+            if(states[i].name != ""){
+              $scope.states.push(states[i]);
+            }
           }
+          //$scope.states = [{name: "main", url: "/"}]
+          //if(toState.name != "main"){
+          //  $scope.states.push(toState);
+          //}
           $scope.currentState = toState;
         });
       }
