@@ -27,6 +27,10 @@ pre {
   color: #C7FF47;
 }
 
+.pointer{
+  cursor: pointer;
+}
+
 .center-text{
   text-align: center;
 }
@@ -132,63 +136,122 @@ footer{
 }
 
 .breadcrumb{
-  height: 41px;
+
+  .border-bottom{
+    border-bottom: 1px #5a5a5a solid;
+
+    &.left{
+      float: left;
+      width: 10%
+    }
+
+    &.right{
+      float: right;
+      width: 40%;
+    }
+  }
+
+  //padding-top: 10px;
+  height: 50px;
   background-color: #151515;
-  padding: 0!important;
+  padding: 10px 0 0 0!important;
   display: flex;
-  background-image: url('../images/background.gif');
-  border-bottom: 1px dashed #222;
+  //background-image: url('../images/background.gif');
+  //border-bottom: 1px dashed #222;
 
   .item
   {
-    min-width: 250px;
+    float: left;
+    min-width: 210px;
+    max-width: 250px;
+    color: lightgrey;
 
-    &.inactive{
-      background-color: #444444;
+    &:hover{
+      color: darkgrey;
     }
 
-    &:not(.inactive){
-      background-image: url('../images/background.gif');
+    &.inactive{
+      .tab-body{
+        border-top: 1px #5a5a5a solid;
+        display: inline-block;
+        height: 100%;
+        width: 170px;
+        background-color: #444444;
+      }
 
       .tab-border{
         &.first:not(.last){
           &.right{
-            background: url('../images/tab-border-left-alt.png');
+            //display: none;
+            background: url('../images/tab-border-left-alt-active.png');
+          }
+
+          &.left{
+            background: url('../images/tab-border-left-inactive.png');
+          }
+        }
+
+        &.first.last{
+          &.right{
+            background: url('../images/tab-border-right-inactive.png');
+          }
+          &.left{
+            background: url('../images/tab-border-left-inactive.png');
+          }
+        }
+
+        &.last:not(.first){
+          &.right{
+            background: url('../images/tab-border-right-inactive.png');
+          }
+          &.left{
+            //background: #444;
+            display: none;
           }
         }
       }
     }
 
-    .tab-border{
-      &.first:not(.last){
-        &.right{
-          background: url('../images/tab-border-right-alt.png');
-        }
-
-        &.left{
-          background: url('../images/tab-border-left.png');
-        }
+    &:not(.inactive){
+      .tab-body{
+        border-top: 1px #5a5a5a solid;
+        display: inline-block;
+        height: 100%;
+        width: 170px;
+        background-image: url('../images/background.gif');
       }
 
-      &.first.last{
-        &.right{
-          background: url('../images/tab-border-right.png');
-        }
-        &.left{
-          background: url('../images/tab-border-left.png');
-        }
-      }
+      .tab-border{
+        &.first:not(.last){
+          &.right{
+            background: url('../images/tab-border-right-alt-active.png');
+          }
 
-      &.last:not(.first){
-        &.right{
-          background: url('../images/tab-border-right.png');
+          &.left{
+            background: url('../images/tab-border-left-active.png');
+          }
         }
-        &.left{
-          display: none;
+
+        &.first.last{
+          &.right{
+            background: url('../images/tab-border-right-active.png');
+          }
+          &.left{
+            background: url('../images/tab-border-left-active.png');
+          }
+        }
+
+        &.last:not(.first){
+          &.right{
+            background: url('../images/tab-border-right-active.png');
+          }
+          &.left{
+            //background: url('../images/background.gif');
+            display: none;
+          }
         }
       }
     }
-
 
     height: 100%;
     font-size: 20px;
@@ -196,23 +259,17 @@ footer{
     text-align: center;
     text-decoration: none;
 
-    a,
-    a:link,
-    a:visited,
-    a:focus{
-      margin-top: 10px;
-      display: inline-block;
-      color: lightgrey;
-    }
+    .tab-body{
+      span{
+        margin-top: 10px;
+        display: inline-block;
 
-    a:hover{
-      color: darkgrey;
-    }
-
-    a[disabled="disabled"]{
-      text-decoration: none!important;
-      cursor: default;
-      color: lightgrey!important;
+        &[disabled="disabled"]{
+          text-decoration: none!important;
+          cursor: default;
+          color: lightgrey!important;
+        }
+      }
     }
 
     .btn{

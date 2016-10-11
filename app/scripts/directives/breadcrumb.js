@@ -34,6 +34,10 @@ function Breadcrumb(){
           //}
           $scope.currentState = toState;
         });
+
+        $scope.goTo = function(state){
+          $state.go(state);
+        }
       }
     ]
   }
