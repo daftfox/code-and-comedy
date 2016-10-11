@@ -173,24 +173,9 @@ footer{
   padding: 10px 0 0 0!important;
   display: flex;
 
-  .border-bottom{
-    border-bottom: 1px #5a5a5a solid;
-
-    &.left{
-      float: left;
-      width: 10%
-    }
-
-    &.right{
-      float: right;
-      width: calc(100% - 10% - 40%);
-    }
-  }
-
-
   .item-wrapper{
 
-    width: 40%;
+    width: 100%;
     border-bottom: 1px #5a5a5a solid;
 
     // ========================= BREADCRUMB ITEM =====================

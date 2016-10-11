@@ -1,5 +1,4 @@
 <div class="breadcrumb">
-  <div class="border-bottom left"></div>
   <div class="item-wrapper">
     <div class="item"
          ng-repeat="state in states track by $index"
@@ -9,11 +8,7 @@
       <div class="tab-body">
         <span ng-disabled="currentState.name === state.name">{{state.name}}.js</span>
       </div>
-      <!--div ng-if="currentState.name !== 'main' && state.name !== 'main'" class="btn btn-xs btn-default pull-right" ui-sref="main">
-        <i class="glyphicon glyphicon-remove"></i>
-      </div-->
       <div class="right tab-border" ng-class="{'first': $first, 'last': $last}"></div>
     </div>
   </div>
-  <div class="border-bottom right"></div>
 </div>
