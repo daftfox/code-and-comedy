@@ -1,28 +1,10 @@
 $font-family-monospace:   "Roboto Mono", "Lucida Console", Monaco, monospace!default;
-
 $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
+@import "../../bower_components/bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
 @import "https://fonts.googleapis.com/css?family=Roboto+Mono";
 @import "ng-terminal";
-// bower:scss
-@import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
-// endbower
-@import "../../bower_components/bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
 
-html{
-  font-family: $font-family-monospace;
-  margin:0;
-  padding:0;
-  height:100%;
-}
-
-body{
-  background-image: url('../images/background.gif');
-  margin:0;
-  padding:0;
-  min-height:100%;
-  position:relative;
-}
-
+// ========================= MISC ====================================
 pre {
   color: #C7FF47;
 }
@@ -35,6 +17,14 @@ pre {
   text-align: center;
 }
 
+.schedule{
+  .code{
+    font-size: 32px;
+  }
+}
+// ========================= /MISC ===================================
+
+// ========================= TYPOGRAPHY ============================
 .code{
   font-size: 24px;
 
@@ -53,18 +43,9 @@ pre {
     color: #808080;
   }
 }
+// ========================= /TYPOGRAPHY ============================
 
-header{
-  margin-top: 100px;
-  margin-bottom: 150px;
-}
-
-.schedule{
-  .code{
-    font-size: 32px;
-  }
-}
-
+// ========================= TEXT COLORS ============================
 .white{
   color: white;
 }
@@ -84,11 +65,35 @@ header{
 .red{
   color: #ff2a00;
 }
+// ========================= /TEXT COLORS ========================
 
-body {
-  padding: 0;
+// ========================= MAIN DOCUMENT ===========================
+html{
+  font-family: $font-family-monospace;
+  margin:0;
+  padding:0;
+  height:100%;
 }
+// ========================= /MAIN DOCUMENT ==========================
 
+// ========================= BODY ====================================
+body{
+  background-image: url('../images/background.gif');
+  margin:0;
+  padding:0;
+  min-height:100%;
+  position:relative;
+}
+// ========================= /BODY ==================================
+
+// ========================= HEADER ==============================
+header{
+  margin-top: 100px;
+  margin-bottom: 150px;
+}
+// ========================= /HEADER =============================
+
+// ========================= CONSOLE =============================
 .console{
   width: 100vw;
   height: calc(100vh - 350px)!important;
@@ -98,12 +103,14 @@ body {
   background: #000;
   border-top: 2px #5a5a5a solid;
 
+  // ========================= TERMINAL =============================
   .terminal{
     width: calc(100vw - 36%);
     height: 90%;
     margin-left: 18%;
   }
 
+  // ========================= TERMINAL SCROLLBAR ===================
   .terminal-viewport::-webkit-scrollbar-track
   {
     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
@@ -121,7 +128,9 @@ body {
     background-color: #C7FF47;
   }
 }
+// ========================= /CONSOLE =============================
 
+// ========================= FOOTER ===============================
 footer{
   text-align: center;
   a, a:link, a:active, a:focus, a:visited{
@@ -134,8 +143,14 @@ footer{
   width:100%;
   height: 25px;
 }
+// ========================= /FOOTER ===============================
 
+// ========================= BREADCRUMB ============================
 .breadcrumb{
+  height: 50px;
+  background-color: #151515;
+  padding: 10px 0 0 0!important;
+  display: flex;
 
   .border-bottom{
     border-bottom: 1px #5a5a5a solid;
@@ -151,23 +166,33 @@ footer{
     }
   }
 
-  //padding-top: 10px;
-  height: 50px;
-  background-color: #151515;
-  padding: 10px 0 0 0!important;
-  display: flex;
 
   .item-wrapper{
 
     width: 40%;
     border-bottom: 1px #5a5a5a solid;
 
+    // ========================= BREADCRUMB ITEM =====================
+    /* I don't know who you are.
+     * I don't know what you want,
+     * but I do have a particular set of skills.
+     * Skills I have acquired over a very long career.
+     * Skills that make me a nightmare for people like you.
+     * Mess with the code below and I will look for you.
+     * I will find you and I will kill you.
+     * :)
+     */
     .item
     {
       float: left;
       min-width: 210px;
       max-width: 250px;
       color: lightgrey;
+      height: 100%;
+      font-size: 20px;
+      padding: 0!important;
+      text-align: center;
+      text-decoration: none;
 
       &:hover{
         color: darkgrey;
@@ -256,12 +281,6 @@ footer{
         }
       }
 
-      height: 100%;
-      font-size: 20px;
-      padding: 0!important;
-      text-align: center;
-      text-decoration: none;
-
       .tab-body{
         span{
           font-size: 16px;
@@ -309,7 +328,9 @@ footer{
     }
   }
 }
+// ========================= /BREADCRUMB ============================
 
+// ========================= RESPONSIVE =============================
 @media only screen and (max-width: 1700px){
   header{
     margin-bottom: 50px;
@@ -366,3 +387,4 @@ footer{
     }
   }
 }
+// ========================= /RESPONSIVE ============================

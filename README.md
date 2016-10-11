@@ -5,10 +5,14 @@ version 0.15.1.
 
 ## Build & development
 
-Run `grunt` for building and `grunt serve` for preview.
+Run `npm install`.
 
-## Testing
+Run `grunt build` for building and `npm start` to serve the `/dist` folder.
+The app will be available at `http://localhost:9001/`
 
-Running `grunt test` will run the unit tests with karma.
+Run `grunt serve` for live preview.
+The app will be available at `http://localhost:9000/`
+
 =======
 Registration site for the upcoming Code &amp; Comedy event
+Live demo: https://cnc-frontend.herokuapp.com/ (no back-end functionality)
