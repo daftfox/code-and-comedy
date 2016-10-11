@@ -1,4 +1,4 @@
-$font-family-monospace:   "Roboto Mono", "Lucida Console", Monaco, monospace!default;
+$font-family-monospace: "Roboto Mono", "Lucida Console", Monaco, monospace!default;
 $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
 @import "../../bower_components/bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
 @import "https://fonts.googleapis.com/css?family=Roboto+Mono";
@@ -19,8 +19,12 @@ pre {
 
 .schedule{
   .code{
-    font-size: 32px;
+    font-size: 26px;
   }
+}
+
+.clear{
+  clear: both;
 }
 // ========================= /MISC ===================================
 
@@ -65,11 +69,27 @@ pre {
 .red{
   color: #ff2a00;
 }
+
+.orange{
+  color: orange;
+}
+
+a{
+  &.orange{
+    color: orange;
+
+    &:hover,
+    &:link,
+    &:active,
+    &:focus{
+      color: orange;
+    }
+  }
+}
 // ========================= /TEXT COLORS ========================
 
 // ========================= MAIN DOCUMENT ===========================
 html{
-  font-family: $font-family-monospace;
   margin:0;
   padding:0;
   height:100%;
@@ -78,6 +98,7 @@ html{
 
 // ========================= BODY ====================================
 body{
+  font-family: $font-family-monospace;
   background-image: url('../images/background.gif');
   margin:0;
   padding:0;
