@@ -29,25 +29,6 @@ pre {
 // ========================= /MISC ===================================
 
 // ========================= TYPOGRAPHY ============================
-.code{
-  font-size: 24px;
-
-  a{
-    color: #6BEBFF;
-
-    &:hover,
-    &:active,
-    &:link,
-    &.focus{
-      color: #6BEBFF;
-    }
-  }
-
-  &.comment{
-    color: #808080;
-  }
-}
-// ========================= /TYPOGRAPHY ============================
 
 // ========================= TEXT COLORS ============================
 .white{
@@ -77,6 +58,9 @@ pre {
 a{
   &.orange{
     color: orange;
+    &.ordina{
+      color: orange!important;
+    }
 
     &:hover,
     &:link,
@@ -87,6 +71,8 @@ a{
   }
 }
 // ========================= /TEXT COLORS ========================
+
+// ========================= /TYPOGRAPHY ============================
 
 // ========================= MAIN DOCUMENT ===========================
 html{
@@ -150,6 +136,58 @@ header{
   }
 }
 // ========================= /CONSOLE =============================
+
+// ========================= COMMENT SECTION ======================
+
+.comment-block{
+  padding: 0;
+  list-style: none;
+  color: #808080;
+  font-size: 24px;
+
+  a{
+    color: #6BEBFF;
+
+    &:hover,
+    &:active,
+    &:link,
+    &.focus{
+      color: #6BEBFF;
+    }
+  }
+
+  li{
+    padding: 0;
+    //counter-increment: line;
+    display: table-row;
+  }
+
+  li:nth-child(1):before{
+    content: "/*\00a0";
+    display: table-cell;
+  }
+
+  li:not(:nth-child(1)):not(:last-child):before{
+    content: "\00a0*\00a0";
+    display: table-cell;
+  }
+
+  li:last-child:not(:nth-child(1)):before{
+    content: "\00a0*/";
+    display: table-cell;
+  }
+
+  ul.comment-block li .line:not([first]):before{
+    content: '\00a0*\00a0';
+  }
+}
+
+ul.comment-block li .line:not([first]):before{
+  content: '\00a0*\00a0';
+  margin-left: -43px;
+}
+
+// ========================= /COMMENT SECTION =====================
 
 // ========================= FOOTER ===============================
 footer{
@@ -340,7 +378,8 @@ footer{
     margin-bottom: 50px;
     margin-top: 25px;
   }
-  .code{
+  .code,
+  .comment-block{
     font-size: 20px;
   }
 
@@ -352,10 +391,15 @@ footer{
     height: calc(100vh - 300px)!important;
     top: 300px;
   }
+
+  ul.comment-block li .line:not([first]):before{
+    margin-left: -37px;
+  }
 }
 
 @media only screen and (max-width: 1200px){
-  .code{
+  .code,
+  .comment-block{
     font-size: 18px;
   }
 
@@ -371,10 +415,15 @@ footer{
       margin-left: 8%;
     }
   }
+
+  ul.comment-block li .line:not([first]):before{
+    margin-left: -33px;
+  }
 }
 
 @media only screen and (max-width: 1000px){
-  .code{
+  .code,
+  .comment-block{
     font-size: 14px;
   }
 
@@ -395,15 +444,24 @@ footer{
     padding-left: 2px!important;
     padding-right: 2px!important;
   }
+
+  ul.comment-block li .line:not([first]):before{
+    margin-left: -25px;
+  }
 }
 
 @media only screen and (max-width: 500px) {
-  .code{
+  .code,
+  .comment-block{
     font-size: 12px;
   }
 
   .schedule .code{
     font-size: 12px;
+  }
+
+  ul.comment-block li .line:not([first]):before{
+    margin-left: -22px;
   }
 }
 // ========================= /RESPONSIVE ============================

@@ -1,3 +1,5 @@
+'use strict';
+
 angular.module('vtortola.ng-terminal', [])
 
   .provider('terminalConfiguration', function () {

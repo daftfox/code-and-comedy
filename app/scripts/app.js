@@ -15,23 +15,25 @@ angular
     'ngResource',
     'vtortola.ng-terminal',
     'underscore'
-  ]).config(function($stateProvider, $locationProvider) {
+  ]).config(function($stateProvider, $locationProvider, $urlRouterProvider) {
+    $urlRouterProvider.otherwise('/');
+
     var mainState = {
       name: 'main',
       url: '/',
       templateUrl: 'views/main.html',
       controller: 'MainCtrl'
-    }
+    };
 
     var registerState = {
       name: 'register',
       url: '/register',
       templateUrl: 'views/register.html',
       controller: 'RegisterCtrl'
-    }
+    };
 
     $stateProvider.state(mainState);
     $stateProvider.state(registerState);
 
-    $locationProvider.html5Mode(true);
+    //$locationProvider.html5Mode(true).hashPrefix('!');
   });

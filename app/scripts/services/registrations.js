@@ -1,3 +1,5 @@
+'use strict';
+
 angular.module('codeAndComedyApp')
   .service('RegistrationsService', ['$resource', 'CONFIG', registrationsService]);
 
@@ -13,5 +15,5 @@ function registrationsService($resource, CONFIG){
   return {
     register:     registrationsService.call.register,
     availability: registrationsService.call.availability
-  }
+  };
 }
