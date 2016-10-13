@@ -1,6 +1,11 @@
 {
-  "name": "codeandcomedy",
+  "name": "code_and_comedy_frontend",
+  "version": "0.0.1",
   "private": true,
+  "description": "Front-end for the Code & Comedy 2016 event",
+  "keywords": ["registration", "Code & Comedy"],
+  "author": "Timothy Claassens",
+  "license": "",
   "dependencies": {
     "express": "*",
     "grunt-wiredep": "^3.0.1"

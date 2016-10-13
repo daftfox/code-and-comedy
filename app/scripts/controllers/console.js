@@ -26,11 +26,11 @@ function ConsoleCtrl ($scope, _, RegistrationsService, helper) {
 
   function init(){
     printToConsole(['---------------------'], 'limegreen');
-    printToConsole([' Available commands:'], 'green');
-    printToConsole([' - ez: Simpler, interactive registration for less experienced users'], 'blue');
-    printToConsole([' - register -m "email address" -n "name": Register for the Code & Comedy event'], 'green');
-    printToConsole([' - as: Number of available seats'], 'green');
-    printToConsole([' - help: This menu'], 'green');
+    printToConsole(['Available commands:'], 'green');
+    printToConsole(['- ez: Simpler, interactive registration for less experienced users'], 'blue');
+    printToConsole(['- register -m "email address" -n "name": Register for the Code & Comedy event'], 'green');
+    printToConsole(['- as: Number of available seats'], 'green');
+    printToConsole(['- help: This menu'], 'green');
     printToConsole(['---------------------'], 'limegreen');
   }
 
