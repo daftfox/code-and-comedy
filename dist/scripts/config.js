@@ -7,7 +7,7 @@ function config() {
   return {
     'APP_NAME': 'Code & Comedy',
     'API_URL': (function(){
-      var apiUrl = 'http://cnc-frontend.herokuapp.com:3000/api/';
+      var apiUrl = 'http://139.162.199.78:3000/api/';
       if(apiUrl.indexOf('API_URL') != -1){
         return 'http://localhost:3000/api/';
       } else {

@@ -481,7 +481,7 @@ module.exports = function (grunt) {
         options: {
           replacements: [{
             pattern: /{{API_URL}}/ig,
-            replacement: 'http://cnc-frontend.herokuapp.com:3000/api/'
+            replacement: 'http://139.162.199.78:3000/api/'
           }]
         }
       }
@@ -536,7 +536,7 @@ module.exports = function (grunt) {
     'htmlmin'
   ]);
 
-  grunt.registerTask('build-heroku', [
+  grunt.registerTask('build-linode', [
     'clean:dist',
     'wiredep',
     'useminPrepare',
