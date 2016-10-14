@@ -8,10 +8,12 @@ version 0.15.1.
 Run `npm install`.
 
 Run `grunt build` for building and `npm start` to serve the `/dist` folder.
-The app will be available at `http://localhost:9001/`
+The app will be available at `http://localhost:3001/`
 
 Run `grunt serve` for live preview.
-The app will be available at `http://localhost:9000/`
+The app will be available at `http://localhost:3001/`
+
+Run `grunt build-heroku` to build for the Heroku environment.
 
 =======
 Registration site for the upcoming Code &amp; Comedy event

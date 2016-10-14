@@ -11,6 +11,8 @@ var  modRewrite = require('connect-modrewrite');
 
 module.exports = function (grunt) {
 
+  grunt.loadNpmTasks('grunt-string-replace');
+
   // Time how long tasks take. Can help when optimizing build times
   require('time-grunt')(grunt);
 
@@ -72,7 +74,7 @@ module.exports = function (grunt) {
     // The actual grunt server settings
     connect: {
       options: {
-        port: 9000,
+        port: 3001,
         // Change this to '0.0.0.0' to access the server from outside.
         hostname: 'localhost',
         livereload: 35729
@@ -469,6 +471,20 @@ module.exports = function (grunt) {
         configFile: 'test/karma.conf.js',
         singleRun: true
       }
+    },
+
+    'string-replace-heroku': {
+      dist: {
+        files: {
+          'dist/scripts/config.js': 'dist/scripts/config.js'
+        },
+        options: {
+          replacements: [{
+            pattern: /{{API_URL}}/ig,
+            replacement: 'http://cnc-frontend.herokuapp.com:3000/api/'
+          }]
+        }
+      }
     }
   });
 
@@ -518,6 +534,25 @@ module.exports = function (grunt) {
     'filerev',
     'usemin',
     'htmlmin'
+  ]);
+
+  grunt.registerTask('build-heroku', [
+    'clean:dist',
+    'wiredep',
+    'useminPrepare',
+    'concurrent:dist',
+    'postcss',
+    'ngtemplates',
+    'concat',
+    'ngAnnotate',
+    'copy:dist',
+    'cdnify',
+    'cssmin',
+    'uglify',
+    'filerev',
+    'usemin',
+    'htmlmin',
+    'string-replace-heroku'
   ]);
 
   grunt.registerTask('default', [

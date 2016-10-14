@@ -6,6 +6,13 @@ function config() {
 
   return {
     'APP_NAME': 'Code & Comedy',
-    'API_URL': 'http://localhost:3000/api/'
+    'API_URL': (function(){
+      var apiUrl = '{{API_URL}}';
+      if(apiUrl.indexOf('API_URL') != -1){
+        return 'http://localhost:3000/api/';
+      } else {
+        return apiUrl;
+      }
+    })()
   };
 }
