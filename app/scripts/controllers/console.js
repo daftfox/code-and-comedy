@@ -106,6 +106,10 @@ function ConsoleCtrl ($scope, _, RegistrationsService, helper) {
         nameAsked = true;
         return;
       } else {
+        if(!cmd[0] || cmd[0].length == 0){
+          printToConsole(['You have not entered a valid name'], 'red')
+          return;
+        }
         name = cmd[0];
       }
     }
@@ -115,6 +119,10 @@ function ConsoleCtrl ($scope, _, RegistrationsService, helper) {
         emailAsked = true;
         return;
       } else {
+        if(!cmd[0] || cmd[0].length == 0 || !helper.validateEmail(email)){
+          printToConsole(['You have not entered a valid E-Mail address'], 'red')
+          return;
+        }
         email = cmd[0];
       }
     }
