@@ -473,7 +473,7 @@ module.exports = function (grunt) {
       }
     },
 
-    'string-replace-heroku': {
+    'string-replace': {
       dist: {
         files: {
           'dist/scripts/config.js': 'dist/scripts/config.js'
@@ -552,7 +552,7 @@ module.exports = function (grunt) {
     'filerev',
     'usemin',
     'htmlmin',
-    'string-replace-heroku'
+    'string-replace'
   ]);
 
   grunt.registerTask('default', [
