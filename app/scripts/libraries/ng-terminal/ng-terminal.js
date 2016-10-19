@@ -406,7 +406,7 @@ angular.module('vtortola.ng-terminal', [])
                 if (scope.outputDelay) {
 
                   for (var i = newValue.text.length - 1; i >= 0; i--) {
-                    var line = document.createElement('pre');
+                    var line = document.createElement('div');
                     line.className = 'terminal-line ' + newValue.level;
 
                     var textLine = newValue.text[i];
@@ -437,10 +437,10 @@ angular.module('vtortola.ng-terminal', [])
                 }
                 else {
                   for (var i = 0; i < newValue.text.length; i++) {
-                    var line = document.createElement('pre');
-                    line.textContent = newValue.output?'  ':'';
+                    var line = document.createElement('div');
+                    line.innerHTML = newValue.output?'  ':'';
                     line.className = 'terminal-line ' + newValue.level;
-                    line.textContent += newValue.text[i];
+                    line.innerHTML += newValue.text[i];
                     results[0].appendChild(line)
                   }
                   if (!!newValue.breakLine) {

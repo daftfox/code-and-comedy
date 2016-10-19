@@ -1,9 +1,19 @@
 <header>
   <ul class="comment-block">
-    <li data-lining>Register below and receive your ticket to Code & Comedy</li>
-    <li data-lining>or <a ui-sref="main">return</a> to the previous page.</li>
+    <li data-lining>Register below by either clicking the button or entering either of the two registration commands</li>
+    <li data-lining>and receive your ticket to Code & Comedy or <a ui-sref="main">return</a> to the previous page.</li>
     <li>&nbsp;</li>
   </ul>
+  <div class="center-children">
+    <span class="btn btn-default"
+          ng-click="ezRegistration()"
+          ng-show="!ez"
+          data-toggle="tooltip"
+          title="Click here to start the interactive registration automatically">
+      <span ng-show="registrationComplete">Register someone else</span>
+      <span ng-show="!registrationComplete">Register now</span>
+    </span>
+  </div>
 </header>
 <div ng-controller="ConsoleCtrl" class="console">
   <terminal> </terminal>

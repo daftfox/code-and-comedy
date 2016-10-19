@@ -26,11 +26,11 @@ function ConsoleCtrl ($scope, _, RegistrationsService, helper) {
 
   function init(){
     printToConsole(['---------------------'], 'limegreen');
-    printToConsole(['Available commands:'], 'green');
-    printToConsole(['- ez: Simpler, interactive registration for less experienced users'], 'blue');
-    printToConsole(['- register -m "email address" -n "name": Register for the Code & Comedy event'], 'green');
-    printToConsole(['- as: Number of available seats'], 'green');
-    printToConsole(['- help: This menu'], 'green');
+    printToConsole(['Available commands:'], 'blue');
+    printToConsole(['- ez : <span class="pre">                                   </span>Interactive registration for less experienced users',
+                    '- register -m "email address" -n "name" : Register for the Code & Comedy event',
+                    '- as : <span class="pre">                                   </span>Number of available seats',
+                    '- help : <span class="pre">                                 </span>This menu'], 'limegreen');
     printToConsole(['---------------------'], 'limegreen');
   }
 
@@ -69,37 +69,17 @@ function ConsoleCtrl ($scope, _, RegistrationsService, helper) {
       return;
     }
 
-    var registration = {
-      email: email,
-      name: name,
-      event_id: 1
-    };
-
-    RegistrationsService.register(registration, function(res){
-      output = [
-        name + ' has been registered with E-Mail address ' + email + '.',
-        '',
-        'We hope you will enjoy your evening.'
-      ];
-
-      printToConsole(output, 'green');
-    }, function(err){
-      console.log(err);
-      switch(err.status){
-        case 409:
-          output = ['The user ' + name + ' has already registered with the e-mail address ' + email + ' before.',
-                    'Please try again with a different account.'];
-          break;
-        default:
-          output = ['An error occured.', 'Please try again later or contact the administrator'];
-          break;
-      }
-      printToConsole(output, 'red');
+    registerUser(name, email, function(){
+      nameAsked = false;
+      emailAsked = false;
+      name = undefined;
+      email = undefined;
+      ez = false;
+      $scope.$emit('registrationComplete');
     });
   }
 
   function ezRegistration(cmd){
-    console.log(cmd);
     if(!name){
       if(!nameAsked){
         printToConsole(['What is your first name?']);
@@ -119,7 +99,7 @@ function ConsoleCtrl ($scope, _, RegistrationsService, helper) {
         emailAsked = true;
         return;
       } else {
-        if(!cmd[0] || cmd[0].length == 0 || !helper.validateEmail(email)){
+        if(!cmd[0] || cmd[0].length == 0 || !helper.validateEmail(cmd[0])){
           printToConsole(['You have not entered a valid E-Mail address'], 'red')
           return;
         }
@@ -133,6 +113,7 @@ function ConsoleCtrl ($scope, _, RegistrationsService, helper) {
         name = undefined;
         email = undefined;
         ez = false;
+        $scope.$emit('registrationComplete');
       });
     }
   }
@@ -148,11 +129,13 @@ function ConsoleCtrl ($scope, _, RegistrationsService, helper) {
     RegistrationsService.register(registration, function(res){
       output = [
         name + ' has been registered with E-Mail address ' + email + '.',
-        '',
+        '&nbsp;',
+        'You will receive your confirmation and ticket per E-Mail within a few minutes.',
         'We hope you will enjoy your evening.'
       ];
 
       printToConsole(output, 'green');
+      printTicket();
       cb();
     }, function(err){
       console.log(err);
@@ -198,6 +181,11 @@ function ConsoleCtrl ($scope, _, RegistrationsService, helper) {
       return;
     }
 
+    if(cmd.indexOf('printTicket') !== -1){
+      printTicket();
+      return;
+    }
+
     // summon help menu
     if(cmd.indexOf('help') !== -1){
       init();
@@ -239,4 +227,29 @@ function ConsoleCtrl ($scope, _, RegistrationsService, helper) {
       printToConsole(['Stop that right now.'], 'red');
     }
   });
+
+  $scope.$on('ezRegistration', function(){
+    ez = true;
+    ezRegistration();
+  })
+
+  function printTicket(){
+    printToConsole([
+      '<span class="pre">  *****************************</span>',
+      '<span class="pre"> }    |                   |    {</span>',
+      '<span class="pre">{     |  CODE AND COMEDY  |     }</span>',
+      '<span class="pre"> }    |                   |    {</span>',
+      '<span class="pre">{     |    17 februari    |     }</span>',
+      '<span class="pre"> }    |                   |    {</span>',
+      '<span class="pre">{     | ORDINA NIEUWEGEIN |     }</span>',
+      '<span class="pre"> }    |                   |    {</span>',
+      '<span class="pre">  *****************************</span>'
+    ], 'blue');
+  }
 }
+
+
+
+
+
+

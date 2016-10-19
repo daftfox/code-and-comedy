@@ -26,6 +26,14 @@ pre {
 .clear{
   clear: both;
 }
+
+.pre{
+  white-space: pre;
+}
+
+.center-children{
+  text-align: center;
+}
 // ========================= /MISC ===================================
 
 // ========================= TYPOGRAPHY ============================
@@ -148,6 +156,8 @@ header{
   list-style: none;
   color: #808080;
   font-size: 24px;
+  width: auto;
+  display: inline-block;
 
   a{
     color: #6BEBFF;
@@ -161,6 +171,9 @@ header{
   }
 
   li{
+    white-space: nowrap;
+    letter-spacing: -1px;
+    line-height: 1;
     padding: 0;
     //counter-increment: line;
     display: table-row;
@@ -404,7 +417,7 @@ footer{
 @media only screen and (max-width: 1200px){
   .code,
   .comment-block{
-    font-size: 18px;
+    font-size: 16px;
   }
 
   .schedule .code{
@@ -425,7 +438,7 @@ footer{
   }
 }
 
-@media only screen and (max-width: 1000px){
+@media only screen and (max-width: 992px){
   .code,
   .comment-block{
     font-size: 14px;
@@ -454,7 +467,7 @@ footer{
   }
 }
 
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 768px) {
   .code,
   .comment-block{
     font-size: 12px;
