@@ -481,7 +481,7 @@ module.exports = function (grunt) {
         options: {
           replacements: [{
             pattern: /{{API_URL}}/ig,
-            replacement: 'http://139.162.199.78:3000/api/'
+            replacement: 'li1498-137.members.linode.com:3000/api/'
           }]
         }
       }
