@@ -32,8 +32,48 @@ angular
       controller: 'RegisterCtrl'
     };
 
+    var contactState = {
+      name: 'contact',
+      url: '/contact',
+      templateUrl: 'views/contact.html',
+      controller: 'ContactCtrl'
+    };
+
+    var locationState = {
+      name: 'location',
+      url: '/location',
+      templateUrl: 'views/location.html',
+      controller: 'LocationCtrl'
+    };
+
+    var newsState = {
+      name: 'news',
+      url: '/news',
+      templateUrl: 'views/news.html',
+      controller: 'NewsCtrl'
+    };
+
+    var programState = {
+      name: 'program',
+      url: '/program',
+      templateUrl: 'views/program.html',
+      controller: 'ProgramCtrl'
+    };
+
+    var speakersState = {
+      name: 'speakers',
+      url: '/speakers',
+      templateUrl: 'views/speakers.html',
+      controller: 'SpeakersCtrl'
+    };
+
     $stateProvider.state(mainState);
     $stateProvider.state(registerState);
+    $stateProvider.state(speakersState);
+    $stateProvider.state(newsState);
+    $stateProvider.state(programState);
+    $stateProvider.state(locationState);
+    $stateProvider.state(contactState);
 
     //$locationProvider.html5Mode(true).hashPrefix('!');
   });

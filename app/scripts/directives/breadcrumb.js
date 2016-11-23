@@ -28,10 +28,6 @@ function Breadcrumb(){
               $scope.states.push(states[i]);
             }
           }
-          //$scope.states = [{name: "main", url: "/"}]
-          //if(toState.name != "main"){
-          //  $scope.states.push(toState);
-          //}
           $scope.currentState = toState;
         });
 
