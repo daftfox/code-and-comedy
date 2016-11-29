@@ -1,4 +1,4 @@
-<div class="breadcrumb">
+<nav class="breadcrumb">
   <div class="item-wrapper">
     <div class="item"
          ng-repeat="state in states track by $index"
@@ -11,4 +11,26 @@
       <div class="right tab-border" ng-class="{'first': $first, 'last': $last}"></div>
     </div>
   </div>
-</div>
+</nav>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" ui-sref="main" data-toggle="collapse" data-target="#bs-navbar-collapse-1">Code & Comedy</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li ng-repeat="state in states track by $index"><a href="/#{{state.url}}" data-toggle="collapse" data-target="#bs-navbar-collapse-1">{{state.name}}</a></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+

@@ -39,6 +39,10 @@ pre {
   height: 24px;
 }
 
+.navbar{
+  display: none;
+}
+
 // ========================= /MISC ===================================
 
 // ========================= TYPOGRAPHY ============================
@@ -140,9 +144,11 @@ header{
 .console{
   width: 100vw;
   height: calc(100vh - 350px)!important;
-  position: fixed;
+  margin-left: calc(-8.3333333333vw - 30px);
+  /*position: absolute;
   top: 350px;
-  left: 0;
+  left: 0;*/
+  float: left;
   background: #000;
   border-top: 2px #5a5a5a solid;
 
@@ -208,7 +214,7 @@ header{
   }
 
   li:nth-child(1):before{
-    content: "/*\00a0";
+    content: "/**\00a0";
     display: table-cell;
   }
 
@@ -275,8 +281,8 @@ footer{
     .item
     {
       float: left;
-      min-width: 150px;
-      max-width: 190px;
+      min-width: 130px;
+      max-width: 250px;
       color: lightgrey;
       height: 100%;
       font-size: 20px;
@@ -293,7 +299,8 @@ footer{
           border-top: 1px #5a5a5a solid;
           display: inline-block;
           height: 40px;
-          width: 110px;
+          min-width: 90px;
+          max-width: 190px;
           background-color: #444444;
         }
 
@@ -341,7 +348,8 @@ footer{
           border-top: 1px #5a5a5a solid;
           display: inline-block;
           height: 51px;
-          width: 110px;
+          min-width: 110px;
+          max-width: 190px;
           background-image: url('../images/background.gif');
         }
 
@@ -462,6 +470,15 @@ footer{
 }
 
 @media only screen and (max-width: 1200px){
+  .breadcrumb{
+    display: none;
+  }
+  .navbar{
+    display: block;
+  }
+  .console{
+    margin-left: -30px;
+  }
   .code,
   .comment-block{
     font-size: 16px;
@@ -486,6 +503,9 @@ footer{
 }
 
 @media only screen and (max-width: 992px){
+  .console{
+    margin-left: 0px;
+  }
   .code,
   .comment-block{
     font-size: 14px;
@@ -515,6 +535,9 @@ footer{
 }
 
 @media only screen and (max-width: 768px) {
+  .console{
+    margin-left: 0px;
+  }
   .code,
   .comment-block{
     font-size: 12px;

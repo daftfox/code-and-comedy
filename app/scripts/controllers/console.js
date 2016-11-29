@@ -15,9 +15,17 @@ function ConsoleCtrl ($scope, _, RegistrationsService, helper) {
   var ee = false,
       ez = false,
       nameAsked = false,
+      lastnameAsked = false,
       emailAsked = false,
+      phoneAsked = false,
+      companyAsked = false,
+      functAsked = false,
       name,
-      email;
+      email,
+      lastname,
+      phone,
+      company,
+      funct;
 
   setTimeout(function () {
     init();
@@ -28,7 +36,7 @@ function ConsoleCtrl ($scope, _, RegistrationsService, helper) {
     printToConsole(['---------------------'], 'limegreen');
     printToConsole(['Available commands:'], 'blue');
     printToConsole(['- ez : <span class="pre">                                   </span>Interactive registration for less experienced users',
-                    '- register -m "email address" -n "name" : Register for the Code & Comedy event',
+                    //'- register -m "email address" -n "name" : Register for the Code & Comedy event',
                     '- as : <span class="pre">                                   </span>Number of available seats',
                     '- help : <span class="pre">                                 </span>This menu'], 'limegreen');
     printToConsole(['---------------------'], 'limegreen');
@@ -56,7 +64,7 @@ function ConsoleCtrl ($scope, _, RegistrationsService, helper) {
     });
   }
 
-  function registerGuest(cmd){
+  /*function registerGuest(cmd){
     var email = cmd[cmd.indexOf('-m') + 1].replace('"', '');
     var name = cmd[cmd.indexOf('-n') + 1].replace('"', '');
     var output;
@@ -77,7 +85,7 @@ function ConsoleCtrl ($scope, _, RegistrationsService, helper) {
       ez = false;
       $scope.$emit('registrationComplete');
     });
-  }
+  }*/
 
   function ezRegistration(cmd){
     if(!name){
@@ -87,10 +95,23 @@ function ConsoleCtrl ($scope, _, RegistrationsService, helper) {
         return;
       } else {
         if(!cmd[0] || cmd[0].length == 0){
-          printToConsole(['You have not entered a valid name'], 'red')
+          printToConsole(['You have not entered a name'], 'red')
           return;
         }
         name = cmd[0];
+      }
+    }
+    if(!lastname){
+      if(!lastnameAsked){
+        printToConsole(['What is your last name?']);
+        lastnameAsked = true;
+        return;
+      } else {
+        if(!cmd[0] || cmd[0].length == 0){
+          printToConsole(['You have not entered a last name'], 'red')
+          return;
+        }
+        lastname = cmd[0];
       }
     }
     if(!email){
@@ -106,16 +127,70 @@ function ConsoleCtrl ($scope, _, RegistrationsService, helper) {
         email = cmd[0];
       }
     }
+    if(!phone){
+      if(!phoneAsked){
+        printToConsole(['What is your phone number?']);
+        phoneAsked = true;
+        return;
+      } else {
+        if(!cmd[0] || cmd[0].length == 0 || !validatePhone(cmd[0])){
+          printToConsole(['You have not entered a valid phone number'], 'red')
+          return;
+        }
+        phone = cmd[0];
+      }
+    }
+    if(!company){
+      if(!companyAsked){
+        printToConsole(['What company do you represent?']);
+        companyAsked = true;
+        return;
+      } else {
+        if(!cmd[0] || cmd[0].length == 0){
+          printToConsole(['You have not entered a company name'], 'red')
+          return;
+        }
+        company = cmd[0];
+      }
+    }
+    if(!funct){
+      if(!functAsked){
+        printToConsole(['What is your function?']);
+        functAsked = true;
+        return;
+      } else {
+        if(!cmd[0] || cmd[0].length == 0){
+          printToConsole(['You have not entered a function'], 'red')
+          return;
+        }
+        funct = cmd[0];
+      }
+    }
+
     if(email && name){
       registerUser(name, email, function(){
         nameAsked = false;
         emailAsked = false;
+        lastnameAsked = false;
+        phoneAsked = false;
+        companyAsked = false;
+        functAsked = false;
         name = undefined;
         email = undefined;
+        lastname = undefined;
+        phone = undefined;
+        company = undefined;
+        funct = undefined;
         ez = false;
         $scope.$emit('registrationComplete');
       });
     }
+  }
+
+  function validatePhone(phone) {
+    var vast_nummer = /^(((0)[1-9]{2}[0-9][-]?[1-9][0-9]{5})|((\\+31|0|0031)[1-9][0-9][-]?[1-9][0-9]{6}))$/;
+    var mobiel_nummer = /^(((\\+31|0|0031)6){1}[1-9]{1}[0-9]{7})$/i;
+    return (vast_nummer.test(phone) || mobiel_nummer.test(phone));
   }
 
   function registerUser(name, email, cb){

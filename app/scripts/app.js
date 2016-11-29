@@ -67,6 +67,13 @@ angular
       controller: 'SpeakersCtrl'
     };
 
+    var cnc2015State = {
+      name: 'Code & Comedy 2015',
+      url: '/code-and-comedy-2015',
+      templateUrl: 'views/cnc2015.html',
+      controller: 'Cnc2015Ctrl'
+    };
+
     $stateProvider.state(mainState);
     $stateProvider.state(registerState);
     $stateProvider.state(speakersState);
@@ -74,6 +81,7 @@ angular
     $stateProvider.state(programState);
     $stateProvider.state(locationState);
     $stateProvider.state(contactState);
+    $stateProvider.state(cnc2015State);
 
     //$locationProvider.html5Mode(true).hashPrefix('!');
   });
