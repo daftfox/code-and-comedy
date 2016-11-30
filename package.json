@@ -56,6 +56,6 @@
   "scripts": {
     "postinstall": "bower install",
     "test": "echo test",
-    "start": "http-server ./dist -p9001 -o"
+    "start": "node server.js"
   }
 }
