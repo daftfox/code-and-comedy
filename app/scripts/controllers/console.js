@@ -187,12 +187,17 @@ function ConsoleCtrl ($scope, _, RegistrationsService, helper) {
     }
   }
 
+  // Validates mobile- or landline number
+  // returns true if valid, false if not
   function validatePhone(phone) {
     var vast_nummer = /^(((0)[1-9]{2}[0-9][-]?[1-9][0-9]{5})|((\\+31|0|0031)[1-9][0-9][-]?[1-9][0-9]{6}))$/;
     var mobiel_nummer = /^(((\\+31|0|0031)6){1}[1-9]{1}[0-9]{7})$/i;
     return (vast_nummer.test(phone) || mobiel_nummer.test(phone));
   }
 
+  // Register a user for the event
+  // Accepts user object and stores user in data storage
+  // TODO: expect user object
   function registerUser(name, email, cb){
     var output;
     var registration = {
@@ -238,10 +243,11 @@ function ConsoleCtrl ($scope, _, RegistrationsService, helper) {
     }
 
     // register the user for the CnC-event
-    if(cmd.indexOf('register') !== -1){
+    // DEPRECATED
+    /*if(cmd.indexOf('register') !== -1){
       registerGuest(cmd);
       return;
-    }
+    }*/
 
     // display the number of available seats
     if(cmd.indexOf('ez') !== -1){

@@ -32,7 +32,6 @@ function Breadcrumb(){
         });
 
         $scope.goTo = function(state){
-          console.log(state);
           $state.go(state);
         };
       }
