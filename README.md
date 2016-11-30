@@ -1,3 +1,5 @@
+Master [![CircleCI](https://circleci.com/gh/daftfox/code-and-comedy-frontend/tree/master.svg?style=svg)](https://circleci.com/gh/daftfox/code-and-comedy-frontend/tree/master)
+
 # code-and-comedy
 
 This project is generated with [yo angular generator](https://github.com/yeoman/generator-angular)
@@ -13,8 +15,12 @@ The app will be available at `http://localhost:3001/`
 Run `grunt serve` for live preview.
 The app will be available at `http://localhost:3001/`
 
-Run `grunt build-heroku` to build for the Heroku environment.
-
 =======
 Registration site for the upcoming Code &amp; Comedy event
-Live demo: https://cnc-frontend.herokuapp.com/ (no back-end functionality)
+www.codeandcomedy.nl
+
+Event manager: Marieke Jacobs
+Ops: Sebastiaan Renkens
+Front-end: Timothy Claassens
+
+Powered by Ordina

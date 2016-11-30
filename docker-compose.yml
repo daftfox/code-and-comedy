@@ -1,0 +1,17 @@
+version: "2"
+services:
+  proxy:
+    build:
+      context: ./proxy
+    ports:
+      - 80:80
+    restart: always
+
+  web:
+    build:
+      context: .
+    environment:
+      - API_URL=http://go.ordina.nl/l/83122/2016-11-23/6k58pq
+    ports:
+      - "3001:3001"
+    restart: always

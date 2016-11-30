@@ -1,0 +1,20 @@
+machine:
+  ruby:
+    version: 2.3.3
+  node:
+    version: 5.6.0
+dependencies:
+  override:
+    - npm install
+    - gem install sass compass
+    - grunt build
+test:
+  override:
+    - npm test
+    - cp -r ./dist $CIRCLE_ARTIFACTS
+deployment:
+  production:
+    branch: master
+    commands:
+      - chmod u+x ./deploy-to-production.sh
+      - ./deploy-to-production.sh

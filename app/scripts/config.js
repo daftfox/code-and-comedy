@@ -6,6 +6,6 @@ function config() {
 
   return {
     'APP_NAME': 'Code & Comedy',
-    'API_URL': 'http://go.ordina.nl/l/83122/2016-11-23/6k58pq'
+    'API_URL': '{{API_URL}}'
   };
 }

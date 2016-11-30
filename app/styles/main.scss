@@ -105,7 +105,7 @@ a:hover.no-hover{
 
 .location{
   width: 100vw;
-  height: 500px;
+  height: calc(100vh - 407px);
   position: fixed;
   left: 0;
   filter: grayscale(100%);
@@ -444,6 +444,9 @@ footer{
 
 // ========================= RESPONSIVE =============================
 @media only screen and (max-width: 1700px){
+  .location{
+    height: calc(100vh - 220px);
+  }
   header{
     margin-bottom: 50px;
     margin-top: 25px;

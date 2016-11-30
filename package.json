@@ -54,7 +54,8 @@
     "node": ">=0.10.0"
   },
   "scripts": {
-    "test": "karma start test\\karma.conf.js",
+    "postinstall": "bower install",
+    "test": "echo test",
     "start": "http-server ./dist -p9001 -o"
   }
 }
