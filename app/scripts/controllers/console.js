@@ -37,7 +37,7 @@ function ConsoleCtrl ($scope, _, RegistrationsService, helper) {
     printToConsole(['Available commands:'], 'blue');
     printToConsole(['- ez : <span class="pre">                                   </span>Interactive registration for less experienced users',
                     //'- register -m "email address" -n "name" : Register for the Code & Comedy event',
-                    '- as : <span class="pre">                                   </span>Number of available seats',
+                    //'- as : <span class="pre">                                   </span>Number of available seats',
                     '- help : <span class="pre">                                 </span>This menu'], 'limegreen');
     printToConsole(['---------------------'], 'limegreen');
   }
@@ -257,10 +257,11 @@ function ConsoleCtrl ($scope, _, RegistrationsService, helper) {
     }
 
     // display the number of available seats
-    if(cmd.indexOf('as') !== -1){
+    // DEPRECATED
+    /*if(cmd.indexOf('as') !== -1){
       printSeatsLeft();
       return;
-    }
+    }*/
 
     if(cmd.indexOf('printTicket') !== -1){
       printTicket();
