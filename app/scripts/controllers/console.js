@@ -63,7 +63,7 @@ function ConsoleCtrl ($scope, _, RegistrationsService, helper) {
       printToConsole(['An error occured.', 'Please try again later or contact the administrator'], 'red');
     });
   }
-
+  // DEPRECATED
   /*function registerGuest(cmd){
     var email = cmd[cmd.indexOf('-m') + 1].replace('"', '');
     var name = cmd[cmd.indexOf('-n') + 1].replace('"', '');
@@ -133,7 +133,7 @@ function ConsoleCtrl ($scope, _, RegistrationsService, helper) {
         phoneAsked = true;
         return;
       } else {
-        if(!cmd[0] || cmd[0].length == 0 || !validatePhone(cmd[0])){
+        if(!cmd[0] || cmd[0].length == 0 || !helper.validatePhone(cmd[0])){
           printToConsole(['You have not entered a valid phone number'], 'red')
           return;
         }
@@ -185,14 +185,6 @@ function ConsoleCtrl ($scope, _, RegistrationsService, helper) {
         $scope.$emit('registrationComplete');
       });
     }
-  }
-
-  // Validates mobile- or landline number
-  // returns true if valid, false if not
-  function validatePhone(phone) {
-    var vast_nummer = /^(((0)[1-9]{2}[0-9][-]?[1-9][0-9]{5})|((\\+31|0|0031)[1-9][0-9][-]?[1-9][0-9]{6}))$/;
-    var mobiel_nummer = /^(((\\+31|0|0031)6){1}[1-9]{1}[0-9]{7})$/i;
-    return (vast_nummer.test(phone) || mobiel_nummer.test(phone));
   }
 
   // Register a user for the event
