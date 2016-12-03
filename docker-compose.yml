@@ -1,10 +1,18 @@
 version: "2"
+
 services:
   proxy:
     build:
       context: ./proxy
+    environment:
+      - MY_DOMAIN_NAME=codeandcomedy.nl
     ports:
       - 80:80
+      - 443:443
+    volumes:
+      - nginx-sslprivate:/etc/ssl/private/
+      - nginx-letsencrypt-etc:/etc/letsencrypt
+      - nginx-letsencrypt-varlib:/var/lib/letsencrypt
     restart: always
 
   web:
@@ -15,3 +23,11 @@ services:
     ports:
       - "3001:3001"
     restart: always
+
+volumes:
+  nginx-letsencrypt-etc:
+    driver: local
+  nginx-letsencrypt-varlib:
+    driver: local
+  nginx-sslprivate:
+    driver: local
