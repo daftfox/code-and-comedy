@@ -5,6 +5,7 @@ angular.module('codeAndComedyApp')
 
 function registrationsService($resource, CONFIG){
   var url = CONFIG.API_URL;
+  console.log(url);
   var registrationsService = {
     call: $resource(url, null, {
       register:     {method: "POST"}
@@ -12,6 +13,6 @@ function registrationsService($resource, CONFIG){
   };
 
   return {
-    register:     function(registration, cb){cb();}//registrationsService.call.register // temporary stub
+    register:     registrationsService.call.register
   };
 }

@@ -17,13 +17,13 @@ function ConsoleCtrl ($scope, _, RegistrationsService, helper) {
       nameAsked = false,
       lastnameAsked = false,
       emailAsked = false,
-      phoneAsked = false,
+      //phoneAsked = false,
       companyAsked = false,
       functAsked = false,
       name,
       email,
       lastname,
-      phone,
+      //phone,
       company,
       funct;
 
@@ -127,7 +127,7 @@ function ConsoleCtrl ($scope, _, RegistrationsService, helper) {
         email = cmd[0];
       }
     }
-    if(!phone){
+    /*if(!phone){
       if(!phoneAsked){
         printToConsole(['What is your phone number?']);
         phoneAsked = true;
@@ -139,7 +139,7 @@ function ConsoleCtrl ($scope, _, RegistrationsService, helper) {
         }
         phone = cmd[0];
       }
-    }
+    }*/
     if(!company){
       if(!companyAsked){
         printToConsole(['What company do you represent?']);
@@ -147,10 +147,11 @@ function ConsoleCtrl ($scope, _, RegistrationsService, helper) {
         return;
       } else {
         if(!cmd[0] || cmd[0].length == 0){
-          printToConsole(['You have not entered a company name'], 'red')
-          return;
+          printToConsole(['You have not entered a company name'], 'limegreen');
+          company = null;
+        } else {
+          company = cmd[0];
         }
-        company = cmd[0];
       }
     }
     if(!funct){
@@ -166,19 +167,25 @@ function ConsoleCtrl ($scope, _, RegistrationsService, helper) {
         funct = cmd[0];
       }
     }
-
-    if(email && name){
-      registerUser(name, email, function(){
+    var guest = {
+      Voornaam: name,
+      Achternaam: lastname,
+      email: email,
+      company: company,
+      funct: funct
+    };
+    if(email && name && lastname){
+      registerUser(guest, function(){
         nameAsked = false;
         emailAsked = false;
         lastnameAsked = false;
-        phoneAsked = false;
+        //phoneAsked = false;
         companyAsked = false;
         functAsked = false;
         name = undefined;
         email = undefined;
         lastname = undefined;
-        phone = undefined;
+        //phone = undefined;
         company = undefined;
         funct = undefined;
         ez = false;
@@ -190,15 +197,10 @@ function ConsoleCtrl ($scope, _, RegistrationsService, helper) {
   // Register a user for the event
   // Accepts user object and stores user in data storage
   // TODO: expect user object
-  function registerUser(name, email, cb){
+  function registerUser(guest, cb){
     var output;
-    var registration = {
-      email: email,
-      name: name,
-      event_id: 1
-    };
 
-    RegistrationsService.register(registration, function(res){
+    RegistrationsService.register(guest, function(res){
       output = [
         name + ' has been registered with E-Mail address ' + email + '.',
         '&nbsp;',
