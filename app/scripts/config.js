@@ -9,7 +9,7 @@ function config() {
     'API_URL': (function(){
       var apiURL = '{{API_URL}}';
       if(apiURL.indexOf('{') != -1){
-        return "http://go.pardot.com/l/83122/2016-11-23/6k58pq";
+        return "https://go.pardot.com/l/83122/2016-11-23/6k58pq";
       } else {
         return apiURL;
       }
