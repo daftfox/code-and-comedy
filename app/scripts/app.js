@@ -12,7 +12,6 @@ angular
   .module('codeAndComedyApp', [
     'ngAnimate',
     'ui.router',
-    'ngResource',
     'vtortola.ng-terminal',
     'underscore'
   ]).config(function($stateProvider, $locationProvider, $urlRouterProvider) {
@@ -27,7 +26,7 @@ angular
 
     var registerState = {
       name: 'register',
-      url: '/register',
+      url: '/register?registered',
       templateUrl: 'views/register.html',
       controller: 'RegisterCtrl'
     };

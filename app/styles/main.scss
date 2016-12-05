@@ -143,7 +143,8 @@ header{
 // ========================= CONSOLE =============================
 .console{
   width: 100vw;
-  height: calc(100vh - 350px)!important;
+  min-height: 300px;
+  height: calc(100vh - 465px)!important;
   //TODO: test if this works properly in ALL mainstream browsers
   margin-left: calc(-8.3333333333vw - 30px);
   float: left;

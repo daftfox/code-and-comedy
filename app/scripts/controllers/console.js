@@ -8,9 +8,18 @@
  * Controller of the codeAndComedyApp
  */
 angular.module('codeAndComedyApp')
-  .controller('ConsoleCtrl', ['$scope', '_', 'RegistrationsService', 'HelperService', ConsoleCtrl]);
+  .controller('ConsoleCtrl', ['$scope', '_', 'HelperService', 'CONFIG', '$timeout', '$stateParams', '$window', ConsoleCtrl]);
 
-function ConsoleCtrl ($scope, _, RegistrationsService, helper) {
+function ConsoleCtrl ($scope, _, helper, CONFIG, $timeout, $stateParams, $window) {
+  $scope.pardotURL = CONFIG.API_URL;
+  var form;
+  var registered = $stateParams.registered;
+
+  // allow view to render before grabbing form
+  $timeout(function(){
+    form = $scope.phoneyCommit;
+  });
+
   var numBadTries = 0;
   var ee = false,
       ez = false,
@@ -19,13 +28,12 @@ function ConsoleCtrl ($scope, _, RegistrationsService, helper) {
       emailAsked = false,
       //phoneAsked = false,
       companyAsked = false,
-      functAsked = false,
-      name,
-      email,
-      lastname,
-      //phone,
-      company,
-      funct;
+      functAsked = false;
+      $scope.name;
+      $scope.email;
+      $scope.lastname;
+      $scope.company;
+      $scope.funct;
 
   setTimeout(function () {
     init();
@@ -35,11 +43,14 @@ function ConsoleCtrl ($scope, _, RegistrationsService, helper) {
   function init(){
     printToConsole(['---------------------'], 'limegreen');
     printToConsole(['Available commands:'], 'blue');
-    printToConsole(['- ez : <span class="pre">                                   </span>Interactive registration for less experienced users',
+    printToConsole(['- ez : <span class="pre">                                   </span>Interactive registration',
                     //'- register -m "email address" -n "name" : Register for the Code & Comedy event',
                     //'- as : <span class="pre">                                   </span>Number of available seats',
                     '- help : <span class="pre">                                 </span>This menu'], 'limegreen');
     printToConsole(['---------------------'], 'limegreen');
+    if(registered){
+      printTicket();
+    }
   }
 
   function printToConsole(text, level){
@@ -63,32 +74,9 @@ function ConsoleCtrl ($scope, _, RegistrationsService, helper) {
       printToConsole(['An error occured.', 'Please try again later or contact the administrator'], 'red');
     });
   }
-  // DEPRECATED
-  /*function registerGuest(cmd){
-    var email = cmd[cmd.indexOf('-m') + 1].replace('"', '');
-    var name = cmd[cmd.indexOf('-n') + 1].replace('"', '');
-    var output;
-    if(!name || cmd.indexOf('-n') === -1){
-      printToConsole(['You have not entered a valid name'], 'red')
-      return;
-    }
-    if(!email || cmd.indexOf('-m') === -1 || !helper.validateEmail(email)){
-      printToConsole(['You have not entered a valid E-Mail address'], 'red')
-      return;
-    }
-
-    registerUser(name, email, function(){
-      nameAsked = false;
-      emailAsked = false;
-      name = undefined;
-      email = undefined;
-      ez = false;
-      $scope.$emit('registrationComplete');
-    });
-  }*/
 
   function ezRegistration(cmd){
-    if(!name){
+    if(!$scope.name){
       if(!nameAsked){
         printToConsole(['What is your first name?']);
         nameAsked = true;
@@ -98,10 +86,10 @@ function ConsoleCtrl ($scope, _, RegistrationsService, helper) {
           printToConsole(['You have not entered a name'], 'red')
           return;
         }
-        name = cmd[0];
+        $scope.name = cmd[0];
       }
     }
-    if(!lastname){
+    if(!$scope.lastname){
       if(!lastnameAsked){
         printToConsole(['What is your last name?']);
         lastnameAsked = true;
@@ -111,10 +99,10 @@ function ConsoleCtrl ($scope, _, RegistrationsService, helper) {
           printToConsole(['You have not entered a last name'], 'red')
           return;
         }
-        lastname = cmd[0];
+        $scope.lastname = cmd[0];
       }
     }
-    if(!email){
+    if(!$scope.email){
       if(!emailAsked){
         printToConsole(['What is your E-Mail address?']);
         emailAsked = true;
@@ -124,23 +112,10 @@ function ConsoleCtrl ($scope, _, RegistrationsService, helper) {
           printToConsole(['You have not entered a valid E-Mail address'], 'red')
           return;
         }
-        email = cmd[0];
+        $scope.email = cmd[0];
       }
     }
-    /*if(!phone){
-      if(!phoneAsked){
-        printToConsole(['What is your phone number?']);
-        phoneAsked = true;
-        return;
-      } else {
-        if(!cmd[0] || cmd[0].length == 0 || !helper.validatePhone(cmd[0])){
-          printToConsole(['You have not entered a valid phone number'], 'red')
-          return;
-        }
-        phone = cmd[0];
-      }
-    }*/
-    if(!company){
+    if(!$scope.company){
       if(!companyAsked){
         printToConsole(['What company do you represent?']);
         companyAsked = true;
@@ -148,13 +123,13 @@ function ConsoleCtrl ($scope, _, RegistrationsService, helper) {
       } else {
         if(!cmd[0] || cmd[0].length == 0){
           printToConsole(['You have not entered a company name'], 'limegreen');
-          company = null;
+          $scope.company = null;
         } else {
-          company = cmd[0];
+          $scope.company = cmd[0];
         }
       }
     }
-    if(!funct){
+    if(!$scope.funct){
       if(!functAsked){
         printToConsole(['What is your function?']);
         functAsked = true;
@@ -164,68 +139,38 @@ function ConsoleCtrl ($scope, _, RegistrationsService, helper) {
           printToConsole(['You have not entered a function'], 'red')
           return;
         }
-        funct = cmd[0];
+        $scope.funct = cmd[0];
       }
     }
+
     var guest = {
-      Voornaam: name,
-      Achternaam: lastname,
-      email: email,
-      company: company,
-      funct: funct
+      Voornaam: $scope.name,
+      Achternaam: $scope.lastname,
+      email: $scope.email,
+      company: $scope.company,
+      funct: $scope.funct
     };
-    if(email && name && lastname){
-      registerUser(guest, function(){
-        nameAsked = false;
-        emailAsked = false;
-        lastnameAsked = false;
-        //phoneAsked = false;
-        companyAsked = false;
-        functAsked = false;
-        name = undefined;
-        email = undefined;
-        lastname = undefined;
-        //phone = undefined;
-        company = undefined;
-        funct = undefined;
-        ez = false;
-        $scope.$emit('registrationComplete');
-      });
+
+    if($scope.email && $scope.name && $scope.lastname){
+      form.commit();
+      nameAsked = false;
+      emailAsked = false;
+      lastnameAsked = false;
+      companyAsked = false;
+      functAsked = false;
+      $scope.name = undefined;
+      $scope.email = undefined;
+      $scope.lastname = undefined;
+      $scope.company = undefined;
+      $scope.funct = undefined;
+      ez = false;
+      $scope.$emit('registrationComplete');
     }
   }
 
-  // Register a user for the event
-  // Accepts user object and stores user in data storage
-  // TODO: expect user object
-  function registerUser(guest, cb){
-    var output;
+  $scope.submit = function(){
 
-    RegistrationsService.register(guest, function(res){
-      output = [
-        name + ' has been registered with E-Mail address ' + email + '.',
-        '&nbsp;',
-        'You will receive your confirmation and ticket per E-Mail within a few minutes.',
-        'We hope you will enjoy your evening.'
-      ];
-
-      printToConsole(output, 'green');
-      printTicket();
-      cb();
-    }, function(err){
-      console.log(err);
-      switch(err.status){
-        case 409:
-          output = ['The user ' + name + ' has already registered with the e-mail address ' + email + ' before.',
-            'Please try again with a different account.'];
-          break;
-        default:
-          output = ['An error occured.', 'Please try again later or contact the administrator'];
-          break;
-      }
-      printToConsole(output, 'red');
-      cb();
-    });
-  }
+  };
 
   $scope.$on('terminal-input', function (e, consoleInput) {
     // split the entire string so we can interpret word by word
@@ -315,7 +260,7 @@ function ConsoleCtrl ($scope, _, RegistrationsService, helper) {
       '<span class="pre"> }    |                   |    {</span>',
       '<span class="pre">{     |  CODE AND COMEDY  |     }</span>',
       '<span class="pre"> }    |                   |    {</span>',
-      '<span class="pre">{     |    17 februari    |     }</span>',
+      '<span class="pre">{     |     8 februari    |     }</span>',
       '<span class="pre"> }    |                   |    {</span>',
       '<span class="pre">{     | ORDINA NIEUWEGEIN |     }</span>',
       '<span class="pre"> }    |                   |    {</span>',
