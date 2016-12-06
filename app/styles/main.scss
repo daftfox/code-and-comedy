@@ -43,6 +43,35 @@ pre {
   display: none;
 }
 
+.overlay{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0,0,0,0.8);
+  padding-top: 35vh;
+  text-align: center;
+
+  &.success{
+    h1{
+      color: orange;
+    }
+    h2{
+      color: white;
+    }
+  }
+
+  &.error{
+    h1{
+      color: red;
+    }
+    h2{
+      color: white;
+    }
+  }
+}
+
 // ========================= /MISC ===================================
 
 // ========================= TYPOGRAPHY ============================

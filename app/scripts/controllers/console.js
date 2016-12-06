@@ -13,10 +13,17 @@ angular.module('codeAndComedyApp')
 function ConsoleCtrl ($scope, _, helper, CONFIG, $timeout, $stateParams, $window) {
   $scope.pardotURL = CONFIG.API_URL;
   var form;
-  var registered = $stateParams.registered;
+  $scope.registered = $stateParams.registered;
+  $scope.error = $stateParams.error;
 
-  if(registered){
-    $window.close();
+  if($scope.registered || $scope.error){
+    moveAlongPeopleNothingToSeeHere();
+  }
+
+  function moveAlongPeopleNothingToSeeHere(){
+    $timeout(function(){
+      $window.close();
+    }, 3000);
   }
 
   // allow view to render before grabbing form
