@@ -90,7 +90,7 @@ function ConsoleCtrl ($scope, _, helper, CONFIG, $timeout, $stateParams, $window
   function ezRegistration(cmd){
     if(!$scope.name){
       if(!nameAsked){
-        printToConsole(['What is your first name?']);
+        printToConsole(['What is your first name?'], 'orange');
         nameAsked = true;
         return;
       } else {
@@ -103,7 +103,7 @@ function ConsoleCtrl ($scope, _, helper, CONFIG, $timeout, $stateParams, $window
     }
     if(!$scope.lastname){
       if(!lastnameAsked){
-        printToConsole(['What is your last name?']);
+        printToConsole(['What is your last name?'], 'orange');
         lastnameAsked = true;
         return;
       } else {
@@ -116,7 +116,7 @@ function ConsoleCtrl ($scope, _, helper, CONFIG, $timeout, $stateParams, $window
     }
     if(!$scope.email){
       if(!emailAsked){
-        printToConsole(['What is your E-Mail address?']);
+        printToConsole(['What is your E-Mail address?'], 'orange');
         emailAsked = true;
         return;
       } else {
@@ -129,7 +129,7 @@ function ConsoleCtrl ($scope, _, helper, CONFIG, $timeout, $stateParams, $window
     }
     if(!$scope.company){
       if(!companyAsked){
-        printToConsole(['What company do you represent?']);
+        printToConsole(['What company do you represent?'], 'orange');
         companyAsked = true;
         return;
       } else {
@@ -143,7 +143,7 @@ function ConsoleCtrl ($scope, _, helper, CONFIG, $timeout, $stateParams, $window
     }
     if(!$scope.funct){
       if(!functAsked){
-        printToConsole(['What is your function?']);
+        printToConsole(['What is your function?'], 'orange');
         functAsked = true;
         return;
       } else {
@@ -157,8 +157,8 @@ function ConsoleCtrl ($scope, _, helper, CONFIG, $timeout, $stateParams, $window
 
     if(!$scope.interest){
       if(!interestAsked){
-        printToConsole(['What interests you the most? (Please enter the corresponding number)',
-                        '- 1: Java',
+        printToConsole(['What interests you the most? (Please enter the corresponding number)'], 'orange');
+        printToConsole(['- 1: Java',
                         '- 2: Microsoft',
                         '- 3: Other']);
         interestAsked = true;
@@ -174,8 +174,8 @@ function ConsoleCtrl ($scope, _, helper, CONFIG, $timeout, $stateParams, $window
 
     if(!$scope.preference){
       if(!preferenceAsked){
-        printToConsole(['To which breakout session would you prefer to go? (Please enter the corresponding number)',
-                        '- 1: Micro services',
+        printToConsole(['To which breakout session would you prefer to go? (Please enter the corresponding number)'], 'orange');
+        printToConsole(['- 1: Micro services',
                         '- 2: Apps',
                         '- 3: Scala',
                         '- 4: Microsoft',
