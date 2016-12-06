@@ -15,6 +15,10 @@ function ConsoleCtrl ($scope, _, helper, CONFIG, $timeout, $stateParams, $window
   var form;
   var registered = $stateParams.registered;
 
+  if(registered){
+    $window.close();
+  }
+
   // allow view to render before grabbing form
   $timeout(function(){
     form = $scope.phoneyCommit;
@@ -27,6 +31,8 @@ function ConsoleCtrl ($scope, _, helper, CONFIG, $timeout, $stateParams, $window
       lastnameAsked = false,
       emailAsked = false,
       //phoneAsked = false,
+      preferenceAsked = false,
+      interestAsked = false,
       companyAsked = false,
       functAsked = false;
       $scope.name;
@@ -34,6 +40,8 @@ function ConsoleCtrl ($scope, _, helper, CONFIG, $timeout, $stateParams, $window
       $scope.lastname;
       $scope.company;
       $scope.funct;
+      $scope.interest;
+      $scope.preference;
 
   setTimeout(function () {
     init();
@@ -48,9 +56,6 @@ function ConsoleCtrl ($scope, _, helper, CONFIG, $timeout, $stateParams, $window
                     //'- as : <span class="pre">                                   </span>Number of available seats',
                     '- help : <span class="pre">                                 </span>This menu'], 'limegreen');
     printToConsole(['---------------------'], 'limegreen');
-    if(registered){
-      printTicket();
-    }
   }
 
   function printToConsole(text, level){
@@ -143,34 +148,100 @@ function ConsoleCtrl ($scope, _, helper, CONFIG, $timeout, $stateParams, $window
       }
     }
 
-    var guest = {
-      Voornaam: $scope.name,
-      Achternaam: $scope.lastname,
-      email: $scope.email,
-      company: $scope.company,
-      funct: $scope.funct
-    };
+    if(!$scope.interest){
+      if(!interestAsked){
+        printToConsole(['What interests you the most? (Please enter the corresponding number)',
+                        '- 1: Java',
+                        '- 2: Microsoft',
+                        '- 3: Other']);
+        interestAsked = true;
+        return;
+      } else {
+        if(!cmd[0] || cmd[0].length == 0){
+          printToConsole(['You have not entered an interest'], 'red')
+          return;
+        }
+        $scope.interest = toInterest(cmd[0]);
+      }
+    }
 
-    if($scope.email && $scope.name && $scope.lastname){
+    if(!$scope.preference){
+      if(!preferenceAsked){
+        printToConsole(['To which breakout session would you prefer to go? (Please enter the corresponding number)',
+                        '- 1: Micro services',
+                        '- 2: Apps',
+                        '- 3: Scala',
+                        '- 4: Microsoft',
+                        '- 5: I don\'t know']);
+        preferenceAsked = true;
+        return;
+      } else {
+        if(!cmd[0] || cmd[0].length == 0){
+          printToConsole(['You have not entered a preference'], 'red')
+          return;
+        }
+        $scope.preference = toPreference(cmd[0]);
+      }
+    }
+
+    if($scope.email && $scope.name && $scope.lastname && $scope.interest && $scope.preference){
       form.commit();
       nameAsked = false;
       emailAsked = false;
       lastnameAsked = false;
       companyAsked = false;
       functAsked = false;
+      preferenceAsked = false;
+      interestAsked = false;
       $scope.name = undefined;
       $scope.email = undefined;
       $scope.lastname = undefined;
       $scope.company = undefined;
       $scope.funct = undefined;
+      $scope.interest = undefined;
+      $scope.preference = undefined;
       ez = false;
       $scope.$emit('registrationComplete');
     }
   }
 
-  $scope.submit = function(){
+  function toInterest(num){
+    var interest;
+    switch(num){
+      case '1':
+        interest = "Java";
+        break;
+      case '2':
+        interest = "Microsoft";
+        break;
+      case '3':
+        interest = "Anders";
+        break;
+    }
+    return interest;
+  }
 
-  };
+  function toPreference(num){
+    var preference;
+    switch(num){
+      case '1':
+        preference = "Micro Services";
+        break;
+      case '2':
+        preference = "Apps";
+        break;
+      case '3':
+        preference = "Scala";
+        break;
+      case '4':
+        preference = "Microsoft";
+        break;
+      case '5':
+        preference = "Weet niet";
+        break;
+    }
+    return preference;
+  }
 
   $scope.$on('terminal-input', function (e, consoleInput) {
     // split the entire string so we can interpret word by word

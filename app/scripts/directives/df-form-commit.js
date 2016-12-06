@@ -16,6 +16,7 @@ function dfFormCommit(){
     require:"form",
     link: function($scope, $el, $attr, $form) {
       $form.commit = function() {
+        $scope.$apply();
         $el[0].submit();
       };
     }
