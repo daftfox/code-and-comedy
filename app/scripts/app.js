@@ -26,7 +26,7 @@ angular
 
     var registerState = {
       name: 'register',
-      url: '/register?registered',
+      url: '/register?registered&error',
       templateUrl: 'views/register.html',
       controller: 'RegisterCtrl'
     };

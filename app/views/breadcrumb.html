@@ -28,7 +28,10 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li ng-repeat="state in states track by $index"><a href="/#{{state.url}}" data-toggle="collapse" data-target="#bs-navbar-collapse-1">{{state.name}}</a></li>
+        <li ng-repeat="state in states track by $index">
+          <a ng-if="state.name === 'register'" href="/#/register" data-toggle="collapse" data-target="#bs-navbar-collapse-1">{{state.name}}</a>
+          <a ng-if="state.name != 'register'" href="/#{{state.url}}" data-toggle="collapse" data-target="#bs-navbar-collapse-1">{{state.name}}</a>
+        </li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
