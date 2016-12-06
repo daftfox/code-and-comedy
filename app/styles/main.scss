@@ -53,21 +53,19 @@ pre {
   padding-top: 35vh;
   text-align: center;
 
+  h2{
+    color: white;
+  }
+  
   &.success{
     h1{
       color: orange;
-    }
-    h2{
-      color: white;
     }
   }
 
   &.error{
     h1{
       color: red;
-    }
-    h2{
-      color: white;
     }
   }
 }
