@@ -275,18 +275,30 @@ function ConsoleCtrl ($scope, _, helper, CONFIG, $timeout, $stateParams, $window
     var preference;
     switch(num){
       case '1':
-        preference = "Micro Services";
+        preference = "Who needs GUI's? : making the terminal sing";
         break;
       case '2':
-        preference = "Apps";
+        preference = "Reactive streams in practice";
         break;
       case '3':
-        preference = "Scala";
+        preference = "Variable prcedural random oak";
         break;
       case '4':
-        preference = "Microsoft";
+        preference = "Infrastructure als code";
         break;
       case '5':
+        preference = "Microsoft is not your enemy";
+        break;
+      case '6':
+        preference = "KumuluzEE - developing microservices using Java EE technologies";
+        break;
+      case '7':
+        preference = "Native script with AngularJS 2";
+        break;
+      case '8':
+        preference = "Microservices visualized";
+        break;
+      case '9':
         preference = "Weet niet";
         break;
     }
