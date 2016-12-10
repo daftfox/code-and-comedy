@@ -1,10 +1,10 @@
 <header>
   <ul class="comment-block">
-    <li>Register below by either clicking the button or</li>
-    <li>entering either of the two registration commands</li>
-    <li>and receive your ticket to Code & Comedy</li>
-    <li>or <a ui-sref="main">return</a> to the previous page.</li>
-    <li>&nbsp;</li>
+    <li>Registreer jezelf hieronder door te klikken op de button "Registreer nu!"</li>
+    <li>of door 'ez' als commando te geven in de terminal.</li>
+    <li>Zodra je een ontvangstbevestiging van ons ontvangt ben je geregistreerd</li>
+    <li>en kun je ons event bezoeken.</li>
+    <li></li>
   </ul>
   <div class="center-children">
     <span class="btn btn-default"
@@ -12,8 +12,8 @@
           ng-show="!ez"
           data-toggle="tooltip"
           title="Click here to start the interactive registration automatically">
-      <span ng-show="registrationComplete">Register someone else</span>
-      <span ng-show="!registrationComplete">Register now</span>
+      <span ng-show="registrationComplete">Registreer iemand anders</span>
+      <span ng-show="!registrationComplete">Registreer nu!</span>
     </span>
   </div>
 </header>
@@ -23,7 +23,7 @@
     <input name="Achternaam" ng-model="lastname">
     <input name="email" ng-model="email">
     <input name="Interesse" ng-model="interest">
-    <input name="Voorkeur" ng-model="preference">
+    <input name="Voorkeur1" ng-model="preference1">
     <input name="Functie" ng-model="funct">
     <input name="Bedrijf" ng-model="company">
   </form>

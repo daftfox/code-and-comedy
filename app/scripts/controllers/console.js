@@ -38,7 +38,8 @@ function ConsoleCtrl ($scope, _, helper, CONFIG, $timeout, $stateParams, $window
       lastnameAsked = false,
       emailAsked = false,
       //phoneAsked = false,
-      preferenceAsked = false,
+      preference1Asked = false,
+      preference2Asked = false,
       interestAsked = false,
       companyAsked = false,
       functAsked = false;
@@ -48,7 +49,8 @@ function ConsoleCtrl ($scope, _, helper, CONFIG, $timeout, $stateParams, $window
       $scope.company;
       $scope.funct;
       $scope.interest;
-      $scope.preference;
+      $scope.preference1;
+      $scope.preference2;
 
   setTimeout(function () {
     init();
@@ -57,11 +59,11 @@ function ConsoleCtrl ($scope, _, helper, CONFIG, $timeout, $stateParams, $window
 
   function init(){
     printToConsole(['---------------------'], 'limegreen');
-    printToConsole(['Available commands:'], 'blue');
-    printToConsole(['- ez : <span class="pre">                                   </span>Interactive registration',
+    printToConsole(['Beschikbare commando\'s:'], 'blue');
+    printToConsole(['- ez : <span class="pre">                                   </span>Registreer jezelf',
                     //'- register -m "email address" -n "name" : Register for the Code & Comedy event',
                     //'- as : <span class="pre">                                   </span>Number of available seats',
-                    '- help : <span class="pre">                                 </span>This menu'], 'limegreen');
+                    '- help : <span class="pre">                                 </span>Dit menu'], 'limegreen');
     printToConsole(['---------------------'], 'limegreen');
   }
 
@@ -90,12 +92,12 @@ function ConsoleCtrl ($scope, _, helper, CONFIG, $timeout, $stateParams, $window
   function ezRegistration(cmd){
     if(!$scope.name){
       if(!nameAsked){
-        printToConsole(['What is your first name?'], 'orange');
+        printToConsole(['Wat is je voornaam?'], 'orange');
         nameAsked = true;
         return;
       } else {
         if(!cmd[0] || cmd[0].length == 0){
-          printToConsole(['You have not entered a name'], 'red')
+          printToConsole(['Je hebt geen naam ingevuld'], 'red')
           return;
         }
         $scope.name = cmd[0];
@@ -103,12 +105,12 @@ function ConsoleCtrl ($scope, _, helper, CONFIG, $timeout, $stateParams, $window
     }
     if(!$scope.lastname){
       if(!lastnameAsked){
-        printToConsole(['What is your last name?'], 'orange');
+        printToConsole(['Wat is je achternaam?'], 'orange');
         lastnameAsked = true;
         return;
       } else {
         if(!cmd[0] || cmd[0].length == 0){
-          printToConsole(['You have not entered a last name'], 'red')
+          printToConsole(['Je hebt geen achternaam ingevuld'], 'red')
           return;
         }
         $scope.lastname = cmd[0];
@@ -116,12 +118,12 @@ function ConsoleCtrl ($scope, _, helper, CONFIG, $timeout, $stateParams, $window
     }
     if(!$scope.email){
       if(!emailAsked){
-        printToConsole(['What is your E-Mail address?'], 'orange');
+        printToConsole(['Wat is je e-mailadres?'], 'orange');
         emailAsked = true;
         return;
       } else {
         if(!cmd[0] || cmd[0].length == 0 || !helper.validateEmail(cmd[0])){
-          printToConsole(['You have not entered a valid E-Mail address'], 'red')
+          printToConsole(['Je hebt geen e-mailadres ingevuld'], 'red')
           return;
         }
         $scope.email = cmd[0];
@@ -129,12 +131,12 @@ function ConsoleCtrl ($scope, _, helper, CONFIG, $timeout, $stateParams, $window
     }
     if(!$scope.company){
       if(!companyAsked){
-        printToConsole(['What company do you represent?'], 'orange');
+        printToConsole(['Voor welk bedrijf werk je?'], 'orange');
         companyAsked = true;
         return;
       } else {
         if(!cmd[0] || cmd[0].length == 0){
-          printToConsole(['You have not entered a company name'], 'limegreen');
+          printToConsole(['Je hebt geen bedrijfsnaam opgegeven'], 'limegreen');
           $scope.company = null;
         } else {
           $scope.company = cmd[0];
@@ -143,12 +145,12 @@ function ConsoleCtrl ($scope, _, helper, CONFIG, $timeout, $stateParams, $window
     }
     if(!$scope.funct){
       if(!functAsked){
-        printToConsole(['What is your function?'], 'orange');
+        printToConsole(['Wat is je functie?'], 'orange');
         functAsked = true;
         return;
       } else {
         if(!cmd[0] || cmd[0].length == 0){
-          printToConsole(['You have not entered a function'], 'red')
+          printToConsole(['Je hebt geen functie ingevuld'], 'red')
           return;
         }
         $scope.funct = cmd[0];
@@ -157,48 +159,79 @@ function ConsoleCtrl ($scope, _, helper, CONFIG, $timeout, $stateParams, $window
 
     if(!$scope.interest){
       if(!interestAsked){
-        printToConsole(['What interests you the most? (Please enter the corresponding number)'], 'orange');
+        printToConsole(['Wat heeft je eerste voorkeur? (Geef het bijbehorende nummer op)'], 'orange');
         printToConsole(['- 1: Java',
                         '- 2: Microsoft',
-                        '- 3: Other']);
+                        '- 3: Scala',
+                        '- 4: IoT',
+                        '- 5: Oracle',
+                        '- 6: Anders']);
         interestAsked = true;
         return;
       } else {
         if(!cmd[0] || cmd[0].length == 0){
-          printToConsole(['You have not entered an interest'], 'red')
+          printToConsole(['Je hebt nog geen voorkeur opgegeven'], 'red')
           return;
         }
         $scope.interest = toInterest(cmd[0]);
       }
     }
 
-    if(!$scope.preference){
-      if(!preferenceAsked){
-        printToConsole(['To which breakout session would you prefer to go? (Please enter the corresponding number)'], 'orange');
-        printToConsole(['- 1: Micro services',
-                        '- 2: Apps',
-                        '- 3: Scala',
-                        '- 4: Microsoft',
-                        '- 5: I don\'t know']);
-        preferenceAsked = true;
+    if(!$scope.preference1){
+      if(!preference1Asked){
+        printToConsole(['Welke break-out sessie zou je willen bezoeken in ronde 1? (Geef het bijbehorende nummer op)'], 'orange');
+        printToConsole(['- 1: Who needs GUI\'s? : making the terminal sing.',
+                        '- 2: Reactive streams in practice',
+                        '- 3: Variable procedural random oak',
+                        '- 4: Infrastructuur als code',
+                        '- 5: Microsoft is not your enemy',
+                        '- 6: KumuluzEE - Developing microservices using Java EE technologies',
+                        '- 7: Native script with AngularJS 2',
+                        '- 8: Microservices visualized',
+                        '- 9: I don\'t know']);
+        preference1Asked = true;
         return;
       } else {
         if(!cmd[0] || cmd[0].length == 0){
           printToConsole(['You have not entered a preference'], 'red')
           return;
         }
-        $scope.preference = toPreference(cmd[0]);
+        $scope.preference1 = toPreference(cmd[0]);
       }
     }
 
-    if($scope.email && $scope.name && $scope.lastname && $scope.interest && $scope.preference){
+    if(!$scope.preference2){
+      if(!preference2Asked){
+        printToConsole(['Welke break-out sessie zou je willen bezoeken in ronde 2? (Geef het bijbehorende nummer op)'], 'orange');
+        printToConsole(['- 1: Who needs GUI\'s? : making the terminal sing.',
+                        '- 2: Reactive streams in practice',
+                        '- 3: Variable procedural random oak',
+                        '- 4: Infrastructuur als code',
+                        '- 5: Microsoft is not your enemy',
+                        '- 6: KumuluzEE - Developing microservices using Java EE technologies',
+                        '- 7: Native script with AngularJS 2',
+                        '- 8: Microservices visualized',
+                        '- 9: I don\'t know']);
+        preference2Asked = true;
+        return;
+      } else {
+        if(!cmd[0] || cmd[0].length == 0){
+          printToConsole(['You have not entered a preference'], 'red')
+          return;
+        }
+        $scope.preference2 = toPreference(cmd[0]);
+      }
+    }
+
+    if($scope.email && $scope.name && $scope.lastname && $scope.interest && $scope.preference1 && $scope.preference2){
       form.commit();
       nameAsked = false;
       emailAsked = false;
       lastnameAsked = false;
       companyAsked = false;
       functAsked = false;
-      preferenceAsked = false;
+      preference1Asked = false;
+      preference2Asked = false;
       interestAsked = false;
       $scope.name = undefined;
       $scope.email = undefined;
@@ -206,7 +239,8 @@ function ConsoleCtrl ($scope, _, helper, CONFIG, $timeout, $stateParams, $window
       $scope.company = undefined;
       $scope.funct = undefined;
       $scope.interest = undefined;
-      $scope.preference = undefined;
+      $scope.preference1 = undefined;
+      $scope.preference2 = undefined;
       ez = false;
       $scope.$emit('registrationComplete');
     }
@@ -219,9 +253,18 @@ function ConsoleCtrl ($scope, _, helper, CONFIG, $timeout, $stateParams, $window
         interest = "Java";
         break;
       case '2':
-        interest = "Microsoft";
+      interest = "Microsoft";
         break;
       case '3':
+        interest = "Scala";
+        break;
+      case '4':
+        interest = "IoT";
+        break;
+      case '5':
+        interest = "Oracle";
+        break;
+      case '6':
         interest = "Anders";
         break;
     }
