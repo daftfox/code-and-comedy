@@ -66,11 +66,18 @@ angular
       controller: 'SpeakersCtrl'
     };
 
-    var breakoutCtrl = {
+    var breakoutState = {
       name: 'break-out sessies',
       url: '/break-out-sessions',
       templateUrl: 'views/breakout.html',
       controller: 'BreakoutCtrl'
+    };
+
+    var faqState = {
+      name: 'FAQ',
+      url: '/FAQ',
+      templateUrl: 'views/FAQ.html',
+      controller: 'faqCtrl'
     };
 
     $stateProvider.state(mainState);
@@ -78,9 +85,10 @@ angular
   $stateProvider.state(programState);
   $stateProvider.state(newsState);
   $stateProvider.state(speakersState);
-  $stateProvider.state(breakoutCtrl);
+  $stateProvider.state(breakoutState);
   $stateProvider.state(locationState);
   $stateProvider.state(contactState);
+  $stateProvider.state(faqState);
 
     //$locationProvider.html5Mode(true).hashPrefix('!');
   });
