@@ -1,0 +1,6 @@
+{
+  "name": "Code-and-comedy-frontend",
+  "tagline": "Registration site for the upcoming Code & Comedy event",
+  "body": "Master [![CircleCI](https://circleci.com/gh/daftfox/code-and-comedy-frontend/tree/master.svg?style=svg)](https://circleci.com/gh/daftfox/code-and-comedy-frontend/tree/master)\r\n\r\n# code-and-comedy\r\n\r\nThis project is generated with [yo angular generator](https://github.com/yeoman/generator-angular)\r\nversion 0.15.1.\r\n\r\n## Build & development\r\n\r\nRun `npm install`.\r\n\r\nRun `grunt build` for building and `npm start` to serve the `/dist` folder.\r\nThe app will be available at `http://localhost:3001/`\r\n\r\nRun `grunt serve` for live preview.\r\nThe app will be available at `http://localhost:3001/`\r\n\r\n=======\r\nRegistration site for the upcoming Code &amp; Comedy event\r\nwww.codeandcomedy.nl\r\n\r\nEvent manager: Marieke Jacobs\r\nOps: Sebastiaan Renkens\r\nFront-end: Timothy Claassens\r\n\r\nPowered by Ordina\r\n",
+  "note": "Don't delete this file! It's used internally to help with page regeneration."
+}
