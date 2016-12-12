@@ -60,10 +60,10 @@ function ConsoleCtrl ($scope, _, helper, CONFIG, $timeout, $stateParams, $window
   function init(){
     printToConsole(['---------------------'], 'limegreen');
     printToConsole(['Beschikbare commando\'s:'], 'blue');
-    printToConsole(['- ez : <span class="pre">                                   </span>Registreer jezelf',
+    printToConsole(['- ez : <span class="pre">                         </span>Registreer jezelf',
                     //'- register -m "email address" -n "name" : Register for the Code & Comedy event',
                     //'- as : <span class="pre">                                   </span>Number of available seats',
-                    '- help : <span class="pre">                                 </span>Dit menu'], 'limegreen');
+                    '- help : <span class="pre">                       </span>Dit menu'], 'limegreen');
     printToConsole(['---------------------'], 'limegreen');
   }
 
