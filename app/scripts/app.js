@@ -76,7 +76,7 @@ angular
     var faqState = {
       name: 'faq',
       url: '/faq',
-      templateUrl: 'views/FAQ.html',
+      templateUrl: 'views/faq.html',
       controller: 'faqCtrl'
     };
 
