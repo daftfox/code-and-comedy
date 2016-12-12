@@ -29,8 +29,8 @@
     <div class="collapse navbar-collapse" id="bs-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li ng-repeat="state in states track by $index">
-          <a ng-if="state.name === 'tickets'" href="/#/tickets" data-toggle="collapse" data-target="#bs-navbar-collapse-1">{{state.name}}</a>
-          <a ng-if="state.name != 'tickets'" href="/#{{state.url}}" data-toggle="collapse" data-target="#bs-navbar-collapse-1">{{state.name}}</a>
+          <a ng-if="state.name === 'tickets'" href="/#!/tickets" data-toggle="collapse" data-target="#bs-navbar-collapse-1">{{state.name}}</a>
+          <a ng-if="state.name != 'tickets'" href="/#!{{state.url}}" data-toggle="collapse" data-target="#bs-navbar-collapse-1">{{state.name}}</a>
         </li>
       </ul>
     </div><!-- /.navbar-collapse -->
