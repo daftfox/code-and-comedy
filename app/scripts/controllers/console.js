@@ -308,10 +308,10 @@ function ConsoleCtrl ($scope, _, helper, CONFIG, $timeout, $stateParams, $window
   $scope.$on('terminal-input', function (e, consoleInput) {
     // split the entire string so we can interpret word by word
     var cmd = consoleInput[0].command.split(' ');
-    $rootScope.$broadcast('$focusNow');
 
     if(ez){
       ezRegistration(cmd);
+      $rootScope.$broadcast('$focusNow');
       return;
     }
 
@@ -326,6 +326,7 @@ function ConsoleCtrl ($scope, _, helper, CONFIG, $timeout, $stateParams, $window
     if(cmd.indexOf('ez') !== -1){
       ez = true;
       ezRegistration(cmd);
+      $rootScope.$broadcast('$focusNow');
       return;
     }
 
@@ -344,6 +345,7 @@ function ConsoleCtrl ($scope, _, helper, CONFIG, $timeout, $stateParams, $window
     // summon help menu
     if(cmd.indexOf('help') !== -1){
       init();
+      $rootScope.$broadcast('$focusNow');
       return;
     }
 
