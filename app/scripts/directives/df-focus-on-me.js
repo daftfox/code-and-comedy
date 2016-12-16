@@ -19,11 +19,6 @@ function dfFocusOnMe($timeout) {
       $timeout(function() {
         element[0].focus();
       });
-    },
-    controller: ['$scope', '$attrs', '$element', '$rootScope', function ($scope, $attrs, $element, $rootScope) {
-      $rootScope.$on('$focusNow', function(){
-        $element[0].focus();
-      });
-    }]
+    }
   };
 }
