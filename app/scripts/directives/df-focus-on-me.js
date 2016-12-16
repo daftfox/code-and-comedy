@@ -15,9 +15,14 @@ angular.module('codeAndComedyApp')
 function dfFocusOnMe($timeout) {
   return {
     restrict: 'A',
-    link: function (scope, element, attrs) {
+    link: function (scope, element, attrs, $rootScope) {
       $timeout(function() {
         element[0].focus();
+      });
+    },
+    controller: function ($scope, $attrs, $element, $rootScope) {
+      $rootScope.$on('$focusNow', function(){
+        $element[0].focus();
       });
     }
   };

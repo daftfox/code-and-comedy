@@ -8,9 +8,9 @@
  * Controller of the codeAndComedyApp
  */
 angular.module('codeAndComedyApp')
-  .controller('ConsoleCtrl', ['$scope', '_', 'HelperService', 'CONFIG', '$timeout', '$stateParams', '$window', ConsoleCtrl]);
+  .controller('ConsoleCtrl', ['$scope', '_', 'HelperService', 'CONFIG', '$timeout', '$stateParams', '$window', '$rootScope', ConsoleCtrl]);
 
-function ConsoleCtrl ($scope, _, helper, CONFIG, $timeout, $stateParams, $window) {
+function ConsoleCtrl ($scope, _, helper, CONFIG, $timeout, $stateParams, $window, $rootScope) {
   $scope.pardotURL = CONFIG.API_URL;
   var form;
   $scope.registered = $stateParams.registered;
@@ -60,10 +60,10 @@ function ConsoleCtrl ($scope, _, helper, CONFIG, $timeout, $stateParams, $window
   function init(){
     printToConsole(['---------------------'], 'limegreen');
     printToConsole(['Beschikbare commando\'s:'], 'blue');
-    printToConsole(['- ez : <span class="pre">                         </span>Registreer jezelf',
+    printToConsole(['- ez : <span class="pre">                 </span>Registreer jezelf',
                     //'- register -m "email address" -n "name" : Register for the Code & Comedy event',
                     //'- as : <span class="pre">                                   </span>Number of available seats',
-                    '- help : <span class="pre">                       </span>Dit menu'], 'limegreen');
+                    '- help : <span class="pre">               </span>Dit menu'], 'limegreen');
     printToConsole(['---------------------'], 'limegreen');
   }
 
@@ -308,6 +308,7 @@ function ConsoleCtrl ($scope, _, helper, CONFIG, $timeout, $stateParams, $window
   $scope.$on('terminal-input', function (e, consoleInput) {
     // split the entire string so we can interpret word by word
     var cmd = consoleInput[0].command.split(' ');
+    $rootScope.$broadcast('$focusNow');
 
     if(ez){
       ezRegistration(cmd);

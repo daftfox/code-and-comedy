@@ -177,7 +177,7 @@ header{
 .console{
   width: 100vw;
   min-height: 300px;
-  height: calc(100vh - 465px)!important;
+  height: calc(100vh - 562px)!important;
   //TODO: test if this works properly in ALL mainstream browsers
   margin-left: calc(-8.3333333333vw - 30px);
   float: left;
@@ -525,7 +525,7 @@ footer{
 
   .console{
     top: 250px;
-    height: calc(100vh - 250px)!important;
+    height: calc(100vh - 290px)!important;
     .terminal{
       width: calc(100vw - 16%);
       margin-left: 8%;
@@ -552,7 +552,7 @@ footer{
 
   .console{
     top: 200px;
-    height: calc(100vh - 200px)!important;
+    height: calc(100vh - 290px)!important;
     .terminal{
       width: 100vw;
       margin-left: 0;
