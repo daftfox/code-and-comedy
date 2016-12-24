@@ -277,6 +277,7 @@ module.exports = function (grunt) {
           '<%= yeoman.dist %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}',
           '<%= yeoman.dist %>/styles/fonts/*',
           '!<%= yeoman.dist %>/scripts/config.js',
+          '!<%= yeoman.dist %>/scripts/libraries/snowstorm-min.js',
           '!<%= yeoman.dist %>/images/thumb.png'
         ]
       }
@@ -305,7 +306,7 @@ module.exports = function (grunt) {
     usemin: {
       html: ['<%= yeoman.dist %>/**/*.html'],
       css: ['<%= yeoman.dist %>/styles/**/*.css'],
-      js: ['<%= yeoman.dist %>/scripts/**/*.js', '!config.js'],
+      js: ['<%= yeoman.dist %>/scripts/**/*.js', '!config.js', '!snowstorm-min.js'],
       options: {
         assetsDirs: [
           '<%= yeoman.dist %>',
@@ -429,7 +430,8 @@ module.exports = function (grunt) {
             '*.html',
             'images/{,*/}*.{webp}',
             'styles/fonts/{,*/}*.*',
-            'scripts/config.js'
+            'scripts/config.js',
+            'scripts/libraries/snowstorm-min.js'
           ]
         }, {
           expand: true,
