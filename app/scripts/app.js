@@ -81,7 +81,7 @@ angular
     };
 
     $stateProvider.state(mainState);
-    $stateProvider.state(registerState);
+    //$stateProvider.state(registerState);
   $stateProvider.state(programState);
   $stateProvider.state(newsState);
   $stateProvider.state(speakersState);
